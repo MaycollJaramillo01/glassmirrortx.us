@@ -65,7 +65,7 @@ export const business = {
 } as const;
 
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://glassmirrortx.us"
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://glassmirrortx.us"
 ).replace(/\/$/, "");
 
 /**
