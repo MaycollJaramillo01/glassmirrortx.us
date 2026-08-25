@@ -1,0 +1,43 @@
+Información extraída — Martinez Orlyn Glass & Mirror
+
+Fuente: sitio publicado glassmirrortx.us + logo de la empresa.
+Nada inventado: no hay año de fundación, street address, 24/7 ni “free estimates” publicados.
+
+1. Datos principales
+Campo	Información
+Nombre comercial	Martinez Orlyn Glass & Mirror
+Actividad	Glass & Mirror / Custom Showers / Windows
+Ciudad base	Houston, Texas
+Teléfono	(832) 253-2925
+Email	martinezorlyn@yahoo.com
+Licencia (logo)	T189489 — Licensed & Insured
+Tagline (logo)	Experience and Professionalism
+Clientes	Residential & Commercial
+Naturaleza	Family-owned
+Sitio actual	https://glassmirrortx.us
+Facebook	https://www.facebook.com/MartinezOrlyn
+WhatsApp	https://wa.me/18322532925
+
+2. Servicios publicados
+- Custom Shower Enclosures
+- Shower Doors
+- Windows and Doors
+- Custom Mirrors
+- Mirrored Walls
+- Glass Service / Installation & Repair
+- Reglazing
+- Solar Screens
+- Double Pane Windows
+
+3. Service areas publicadas
+Houston, Katy, Sugar Land, Cypress, Spring, Tomball, Humble, Conroe, Alvin, League City (TX)
+
+4. Paleta (logo → CSS variables en app/globals.css)
+- Forest green (nombre): --color-forest #0a6b2e
+- Teal/cyan accent (vidrio): --color-gold #14c4c4
+- Charcoal cool: --color-charcoal #0a1218
+- Bone: --color-bone #f4f8f9
+
+5. Plantilla
+Estructura tomada de egtreeservicesllc.com (Next.js 15 + Tailwind 4).
+Contenido EG Tree reemplazado; fuentes Archivo/Plex conservadas.
