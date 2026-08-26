@@ -15,7 +15,7 @@ export function LocationHero({ area, trail }: { area: ServiceArea; trail: Crumb[
     <section className="relative isolate overflow-hidden bg-charcoal">
       <div
         aria-hidden="true"
-        className="rings pointer-events-none absolute -top-56 -right-40 size-[46rem] text-bone/[0.05]"
+        className="glass-facet pointer-events-none absolute -top-56 -right-40 size-[46rem] text-bone/[0.05]"
       />
 
       <Container width="wide" className="relative z-10 pt-32 pb-16 md:pt-40 md:pb-24">

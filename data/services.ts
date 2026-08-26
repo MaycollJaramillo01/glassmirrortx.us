@@ -48,19 +48,19 @@ export function mediaFor(slug: string): Photo[] {
 }
 
 /**
- * Fallback hero when a service has no folder photographs yet. Drawn from
- * photos.ts so every service page still has a real visual.
+ * Fallback hero when a service has no folder photographs yet.
+ * Each entry is stock imagery that shows the service subject.
  */
 const stockHero: Record<string, Photo> = {
   "custom-shower-enclosures": photos.showerEnclosure,
-  "shower-doors": photos.showerEnclosureAlt,
+  "shower-doors": photos.showerDoor,
   "custom-mirrors": photos.mirrorInstall,
   "mirrored-walls": photos.mirrorWall,
   "windows-and-doors": photos.windowGlass,
   "double-pane-windows": photos.windowGlassAlt,
-  "solar-screens": photos.heroGlass,
+  "solar-screens": photos.solarScreen,
   "glass-installation-repair": photos.glassWork,
-  reglazing: photos.glassWorkAlt,
+  reglazing: photos.reglazing,
 };
 
 function heroFor(slug: string): Photo | null {
@@ -816,7 +816,7 @@ const drafts: Draft[] = [
         { label: "Contact", value: "(832) 253-2925" },
       ],
     },
-    heroVariant: "urgent",
+    heroVariant: "image-right",
     signals: {
       heading: "When to call for installation or repair",
       items: [

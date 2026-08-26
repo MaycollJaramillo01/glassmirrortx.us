@@ -3,79 +3,68 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import { serviceMedia } from "@/data/service-media";
-import { serviceGroups, services } from "@/data/services";
+import { galleryCategories, galleryItems } from "@/data/gallery";
 import { cn } from "@/lib/utils/cn";
 
 /**
- * Job gallery, built from the imported photographs rather than a hand-written
- * list — every file under assets/img/services appears here automatically once
- * scripts/import-service-media.ps1 has been run.
- *
- * Filters are the services that actually have photographs, so a service with an
- * empty folder never produces an empty tab.
- *
- * Laid out in CSS columns: the photographs mix portrait and landscape, and a
- * fixed-ratio grid would crop half of them to the wrong shape.
+ * Company job gallery. Filters use the categories on each gallery item —
+ * real Martinez Orlyn photographs, not stock.
  */
-
-const serviceName = new Map(services.map((s) => [s.slug, s.name]));
-const groupName = new Map<string, string>(serviceGroups.map((g) => [g.id, g.name]));
-
-/** Only the folders that produced photographs, in service order. */
-const filters = services
-  .filter((s) => serviceMedia.some((m) => m.service === s.slug))
-  .map((s) => ({ slug: s.slug, name: s.name, count: serviceMedia.filter((m) => m.service === s.slug).length }));
-
 export function GalleryGrid() {
-  const [active, setActive] = useState<string>("all");
+  const [active, setActive] = useState<string>("All");
 
-  const visible = active === "all" ? serviceMedia : serviceMedia.filter((m) => m.service === active);
+  const counts = Object.fromEntries(
+    galleryCategories.map((category) => [
+      category,
+      category === "All"
+        ? galleryItems.length
+        : galleryItems.filter((item) => item.category === category).length,
+    ]),
+  ) as Record<(typeof galleryCategories)[number], number>;
+
+  const visible =
+    active === "All" ? galleryItems : galleryItems.filter((item) => item.category === active);
 
   return (
     <>
-      <div className="flex flex-wrap gap-2" role="group" aria-label="Filter gallery by service">
-        <FilterButton
-          label="All work"
-          count={serviceMedia.length}
-          selected={active === "all"}
-          onSelect={() => setActive("all")}
-        />
-        {filters.map((f) => (
+      <div className="flex flex-wrap gap-2" role="group" aria-label="Filter gallery by category">
+        {galleryCategories.map((category) => (
           <FilterButton
-            key={f.slug}
-            label={f.name}
-            count={f.count}
-            selected={active === f.slug}
-            onSelect={() => setActive(f.slug)}
+            key={category}
+            label={category === "All" ? "All work" : category}
+            count={counts[category]}
+            active={active === category}
+            onClick={() => setActive(category)}
           />
         ))}
       </div>
 
-      <p aria-live="polite" className="sr-only">
-        Showing {visible.length} of {serviceMedia.length} photographs.
-      </p>
-
-      <div className="mt-10 gap-5 sm:columns-2 lg:columns-3">
-        {visible.map((item) => (
-          <figure key={item.src} className="group mb-5 break-inside-avoid">
-            <div className="relative overflow-hidden bg-sand">
-              <Image
-                src={item.src}
-                alt={`${groupName.get(item.group) ?? "Job"} photograph from Martinez Orlyn Glass & Mirror in the Houston, Texas area`}
-                width={item.width}
-                height={item.height}
-                loading="lazy"
-                sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                className="img-zoom h-auto w-full"
-              />
-            </div>
-            <figcaption className="mt-2.5 font-display text-[0.68rem] font-bold tracking-[0.14em] text-muted uppercase">
-              {serviceName.get(item.service) ?? item.service}
-            </figcaption>
-          </figure>
-        ))}
-      </div>
+      {visible.length === 0 ? (
+        <p className="mt-10 text-muted">No photographs in this category yet.</p>
+      ) : (
+        <ul className="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3">
+          {visible.map((photo) => (
+            <li key={photo.src} className="mb-4 break-inside-avoid">
+              <figure className="group relative overflow-hidden bg-charcoal/5">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={photo.width}
+                  height={photo.height}
+                  sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                  className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+                <figcaption className="absolute inset-x-0 bottom-0 bg-linear-to-t from-charcoal/85 to-transparent px-4 pt-10 pb-4">
+                  <p className="font-display text-[0.68rem] font-bold tracking-[0.14em] text-gold uppercase">
+                    {photo.category}
+                  </p>
+                  <p className="mt-1 text-[0.9rem] font-semibold text-bone">{photo.caption}</p>
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }
@@ -83,30 +72,30 @@ export function GalleryGrid() {
 function FilterButton({
   label,
   count,
-  selected,
-  onSelect,
+  active,
+  onClick,
 }: {
   label: string;
   count: number;
-  selected: boolean;
-  onSelect: () => void;
+  active: boolean;
+  onClick: () => void;
 }) {
+  if (count === 0 && label !== "All work") return null;
+
   return (
     <button
       type="button"
-      onClick={onSelect}
-      aria-pressed={selected}
+      onClick={onClick}
+      aria-pressed={active}
       className={cn(
-        "inline-flex min-h-[44px] items-center gap-2 border px-4 py-2 font-display text-[0.7rem] font-bold tracking-[0.1em] uppercase transition-colors",
-        selected
-          ? "border-charcoal bg-charcoal text-bone"
-          : "border-charcoal/20 text-charcoal hover:border-charcoal/50",
+        "inline-flex min-h-[40px] items-center gap-2 border px-4 py-2 font-display text-[0.7rem] font-bold tracking-[0.1em] uppercase transition-colors",
+        active
+          ? "border-forest bg-forest text-bone"
+          : "border-charcoal/15 bg-white text-charcoal hover:border-forest hover:text-forest",
       )}
     >
       {label}
-      <span className={cn("text-[0.66rem] tabular-nums", selected ? "text-gold" : "text-muted")}>
-        {count}
-      </span>
+      <span className={cn("tabular-nums", active ? "text-bone/70" : "text-muted")}>{count}</span>
     </button>
   );
 }

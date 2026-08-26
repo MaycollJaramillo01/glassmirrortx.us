@@ -55,8 +55,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     { name: service.name, href: `/services/${service.slug}` },
   ];
 
-  const urgent = service.heroVariant === "urgent";
-
   return (
     <>
       <ServiceHero service={service} trail={trail} />
@@ -70,8 +68,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         steps={service.process}
         eyebrow="Our Process"
         heading={`How we handle ${service.name.toLowerCase()}`}
-        tone={urgent ? "light" : "dark"}
-        className={urgent ? undefined : "bg-bone"}
+        tone="dark"
+        className="bg-bone"
       />
 
       <WhyUsCompact />
@@ -88,7 +86,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       <RelatedServices slugs={service.related} />
 
       <FinalCTA
-        eyebrow={`Free Estimates · ${business.city}, ${business.stateCode}`}
+        eyebrow={`Appointments · ${business.city}, ${business.stateCode}`}
         title={
           <>
             Need {service.name.toLowerCase()}
@@ -96,7 +94,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <span className="text-gold">in {business.city}?</span>
           </>
         }
-        lead={`Tell us what you are looking at and we will come out, walk the job and price it at no charge. Serving ${business.city} and surrounding communities within ${business.radiusLabel}.`}
+        lead={`Tell us what you are looking at and we will help you schedule a measure or consult. Serving ${business.city} and surrounding communities.`}
       />
 
       <JsonLd

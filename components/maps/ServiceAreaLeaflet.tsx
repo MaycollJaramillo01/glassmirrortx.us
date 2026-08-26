@@ -25,14 +25,18 @@ const cities: City[] = [
 
 export function ServiceAreaLeaflet() {
   return (
-    <div className="eg-service-map relative h-[23rem] overflow-hidden border border-charcoal/15 bg-[#dfe8df] sm:h-[29rem]">
+    /*
+      isolation + overflow keep Leaflet's high pane z-indexes inside this box
+      so the map cannot paint over the fixed site header while scrolling.
+    */
+    <div className="glass-service-map relative isolate z-0 h-[23rem] overflow-hidden border border-charcoal/15 bg-[#e8f2f2] sm:h-[29rem]">
       <MapContainer
         center={houston}
         zoom={9}
         minZoom={8}
         maxZoom={14}
         scrollWheelZoom={false}
-        className="size-full"
+        className="size-full !z-0"
         aria-label="Interactive map showing Martinez Orlyn Glass & Mirror coverage around Houston, Texas"
       >
         <TileLayer
@@ -42,7 +46,7 @@ export function ServiceAreaLeaflet() {
         <Circle
           center={houston}
           radius={64374}
-          pathOptions={{ color: "#48c957", fillColor: "#48c957", fillOpacity: 0.1, weight: 2 }}
+          pathOptions={{ color: "#14c4c4", fillColor: "#14c4c4", fillOpacity: 0.1, weight: 2 }}
         />
         {cities.map((city) => (
           <CircleMarker
@@ -50,8 +54,8 @@ export function ServiceAreaLeaflet() {
             center={city.coordinates}
             radius={city.home ? 9 : 6}
             pathOptions={{
-              color: "#f8fbf7",
-              fillColor: city.home ? "#48c957" : "#080c09",
+              color: "#f4f8f9",
+              fillColor: city.home ? "#14c4c4" : "#0a1218",
               fillOpacity: 1,
               weight: 2,
             }}
@@ -62,7 +66,7 @@ export function ServiceAreaLeaflet() {
           </CircleMarker>
         ))}
       </MapContainer>
-      <p className="pointer-events-none absolute bottom-4 left-4 z-[500] bg-charcoal px-3 py-2 font-display text-[0.65rem] font-bold tracking-[0.12em] text-bone uppercase">
+      <p className="pointer-events-none absolute bottom-4 left-4 z-[1] bg-charcoal px-3 py-2 font-display text-[0.65rem] font-bold tracking-[0.12em] text-bone uppercase">
         Houston home base · glass &amp; mirror service area
       </p>
     </div>

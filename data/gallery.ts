@@ -1,5 +1,4 @@
 import type { BeforeAfterItem, GalleryItem, Testimonial } from "@/types";
-import { photos } from "./photos";
 
 export const galleryCategories = [
   "All",
@@ -9,62 +8,98 @@ export const galleryCategories = [
   "Projects",
 ] as const;
 
-/** Real job photographs. Captions describe the work shown, nothing more. */
+/**
+ * Real job photographs from Martinez Orlyn’s published work (previous site).
+ * These stay on the Gallery page only — service heroes use stock in photos.ts.
+ */
 export const galleryItems: GalleryItem[] = [
   {
-    ...photos.showerEnclosure,
+    src: "/images/gallery/job-shower-1.webp",
+    alt: "Custom frameless shower enclosure installed for a Houston-area bathroom",
+    width: 1500,
+    height: 2000,
     category: "Custom Showers",
-    caption: "Custom frameless shower enclosure in a finished bathroom",
+    caption: "Custom frameless shower enclosure",
   },
   {
-    ...photos.showerEnclosureAlt,
+    src: "/images/gallery/job-shower-2.webp",
+    alt: "Glass shower enclosure with chrome hardware",
+    width: 1500,
+    height: 2000,
     category: "Custom Showers",
     caption: "Glass shower enclosure with chrome hardware",
   },
   {
-    ...photos.mirrorWall,
+    src: "/images/gallery/job-mirror-wall.webp",
+    alt: "Large mirrored wall panels in a residential interior",
+    width: 1500,
+    height: 2000,
     category: "Mirrors",
-    caption: "Large mirrored wall panels in a residential interior",
+    caption: "Mirrored wall panels",
   },
   {
-    ...photos.mirrorInstall,
+    src: "/images/gallery/job-mirror-1.webp",
+    alt: "Custom mirror installation in a finished interior",
+    width: 1500,
+    height: 2000,
     category: "Mirrors",
-    caption: "Custom mirror installation in a finished interior",
+    caption: "Custom mirror installation",
   },
   {
-    ...photos.mirrorInstallAlt,
+    src: "/images/gallery/job-mirror-2.webp",
+    alt: "Installed mirror panel on an interior wall",
+    width: 514,
+    height: 960,
     category: "Mirrors",
-    caption: "Installed mirror panel on an interior wall",
+    caption: "Installed mirror panel",
   },
   {
-    ...photos.windowGlass,
+    src: "/images/gallery/job-window-1.webp",
+    alt: "Window glass work on a residential property",
+    width: 720,
+    height: 960,
     category: "Windows & Glass",
-    caption: "Window glass work on a residential property",
+    caption: "Residential window glass",
   },
   {
-    ...photos.windowGlassAlt,
+    src: "/images/gallery/job-window-2.webp",
+    alt: "Installed residential window glass",
+    width: 720,
+    height: 960,
     category: "Windows & Glass",
-    caption: "Installed residential window glass",
+    caption: "Installed window glass",
   },
   {
-    ...photos.glassWork,
-    category: "Projects",
-    caption: "Residential glass installation work in progress",
-  },
-  {
-    ...photos.glassWorkAlt,
-    category: "Projects",
-    caption: "Finished glass and mirror project in a Houston-area home",
-  },
-  {
-    ...photos.heroGlass,
+    src: "/images/gallery/job-interior-glass.webp",
+    alt: "Interior view through residential glass to an outdoor space",
+    width: 2040,
+    height: 1148,
     category: "Windows & Glass",
-    caption: "Interior view through residential glass to an outdoor space",
+    caption: "Interior view through residential glass",
   },
   {
-    ...photos.aboutShop,
+    src: "/images/gallery/job-glass-1.webp",
+    alt: "Residential glass installation work in progress",
+    width: 720,
+    height: 960,
     category: "Projects",
-    caption: "Martinez Orlyn Glass & Mirror truck and shop exterior",
+    caption: "Glass installation in progress",
+  },
+  {
+    src: "/images/gallery/job-glass-2.webp",
+    alt: "Finished glass and mirror project in a Houston-area home",
+    width: 1200,
+    height: 1600,
+    category: "Projects",
+    caption: "Finished glass and mirror project",
+  },
+  {
+    src: "/images/gallery/job-company-truck.webp",
+    alt: "Martinez Orlyn Glass & Mirror branded truck and shop exterior",
+    width: 2560,
+    height: 1244,
+    category: "Projects",
+    caption: "Martinez Orlyn Glass & Mirror truck",
   },
 ];
 

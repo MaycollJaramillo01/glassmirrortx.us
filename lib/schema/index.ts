@@ -4,9 +4,9 @@ import type { FAQ, Service, ServiceArea } from "@/types";
 /**
  * JSON-LD builders.
  *
- * Only confirmed facts are emitted. There is deliberately no streetAddress,
- * no geo coordinates, no aggregateRating and no review markup, because none of
- * that is verified. Inventing them would be schema spam and a policy violation.
+ * Only confirmed facts are emitted. There is deliberately no geo pin beyond
+ * the published Maps profile, no aggregateRating and no review markup.
+ * Inventing those would be schema spam and a policy violation.
  */
 
 const BUSINESS_ID = `${SITE_URL}/#business`;
@@ -17,22 +17,35 @@ export function buildLocalBusinessSchema() {
     "@type": "HomeAndConstructionBusiness",
     "@id": BUSINESS_ID,
     name: business.legalName,
+    alternateName: ["Martinez Orlyn", "Martinez Orlyn Glass Mirror"],
+    legalName: business.legalName,
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
+    image: `${SITE_URL}/images/stock/hero-glass.webp`,
     telephone: business.phone,
     email: business.email,
+    slogan: business.tagline,
+    description:
+      "Glass and mirror services for residential and commercial properties in Houston, Texas and surrounding communities — custom shower enclosures, mirrors, windows, solar screens and glass repair.",
+    disambiguatingDescription:
+      "Glass and mirror installation and repair only. Not a tree service, landscaping company, land-clearing contractor or arborist.",
     identifier: {
       "@type": "PropertyValue",
       name: "License",
       value: business.license,
     },
-    sameAs: Object.values(business.social).filter(Boolean),
-    description:
-      "Glass and mirror services for residential and commercial properties in Houston, Texas and surrounding communities — custom shower enclosures, mirrors, windows, solar screens and glass repair.",
+    sameAs: [
+      ...Object.values(business.social).filter(Boolean),
+      business.googleMaps,
+      business.whatsapp,
+    ].filter(Boolean),
+    openingHours: [...business.openingHours],
     address: {
       "@type": "PostalAddress",
+      streetAddress: business.streetAddress,
       addressLocality: business.city,
       addressRegion: business.stateCode,
+      postalCode: business.zip,
       addressCountry: "US",
     },
     areaServed: [
@@ -42,12 +55,22 @@ export function buildLocalBusinessSchema() {
         name: `${county}, ${business.stateCode}`,
       })),
     ],
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: business.phoneHref,
-      contactType: "appointments and estimates",
-      areaServed: "US-TX",
-    },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: business.phoneHref,
+        contactType: "customer service",
+        areaServed: "US-TX",
+        availableLanguage: ["English", "Spanish"],
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: business.phoneHref,
+        contactType: "appointments",
+        areaServed: "US-TX",
+        availableLanguage: ["English", "Spanish"],
+      },
+    ],
     knowsAbout: [
       "Custom shower enclosures",
       "Shower doors",
@@ -59,7 +82,45 @@ export function buildLocalBusinessSchema() {
       "Glass repair and reglazing",
       "Solar screens",
     ],
-    image: `${SITE_URL}/images/hero/houston-glass-hero.webp`,
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Glass and mirror services",
+      itemListElement: [
+        {
+          "@type": "OfferCatalog",
+          name: "Bathroom glass",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom shower enclosures", url: `${SITE_URL}/services/custom-shower-enclosures` } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Shower doors", url: `${SITE_URL}/services/shower-doors` } },
+          ],
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Mirrors",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom mirrors", url: `${SITE_URL}/services/custom-mirrors` } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mirrored walls", url: `${SITE_URL}/services/mirrored-walls` } },
+          ],
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Windows, doors and screens",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Windows and doors", url: `${SITE_URL}/services/windows-and-doors` } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Double-pane windows", url: `${SITE_URL}/services/double-pane-windows` } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Solar screens", url: `${SITE_URL}/services/solar-screens` } },
+          ],
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Glass services",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Glass installation and repair", url: `${SITE_URL}/services/glass-installation-repair` } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Reglazing", url: `${SITE_URL}/services/reglazing` } },
+          ],
+        },
+      ],
+    },
   };
 }
 
@@ -69,8 +130,11 @@ export function buildWebSiteSchema() {
     "@id": WEBSITE_ID,
     url: SITE_URL,
     name: business.legalName,
+    description:
+      "Official website for Martinez Orlyn Glass & Mirror — Houston glass and mirror services for showers, mirrors, windows and glass repair.",
     publisher: { "@id": BUSINESS_ID },
     inLanguage: "en-US",
+    about: { "@id": BUSINESS_ID },
   };
 }
 

@@ -8,7 +8,7 @@ const ServiceAreaLeaflet = dynamic(
     ssr: false,
     loading: () => (
       <div
-        className="h-[23rem] animate-pulse border border-charcoal/15 bg-[#dfe8df] sm:h-[29rem]"
+        className="h-[23rem] animate-pulse border border-charcoal/15 bg-[#e8f2f2] sm:h-[29rem]"
         aria-label="Loading interactive service map"
       />
     ),

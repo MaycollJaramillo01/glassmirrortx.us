@@ -132,7 +132,7 @@ export function ServiceBenefits({ benefits }: { benefits: Benefit[] }) {
     >
       <div
         aria-hidden="true"
-        className="rings pointer-events-none absolute -top-56 -right-40 size-[46rem] text-bone/[0.07]"
+        className="glass-facet pointer-events-none absolute -top-56 -right-40 size-[46rem] text-bone/[0.07]"
       />
       <div aria-hidden="true" className="grain pointer-events-none absolute inset-0" />
 
