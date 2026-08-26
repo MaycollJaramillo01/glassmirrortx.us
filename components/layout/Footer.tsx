@@ -21,15 +21,14 @@ export function Footer() {
 
   return (
     <footer className="relative overflow-hidden bg-charcoal text-bone">
-      {/* Soft ring motif — texture, not an illustration. */}
+      {/* Soft glass-facet motif — pane lattice, not an illustration. */}
       <div
         aria-hidden="true"
-        className="rings pointer-events-none absolute -top-40 -right-32 size-[34rem] text-bone/[0.035]"
-        style={{ ["--rings-x" as string]: "50%", ["--rings-y" as string]: "50%" }}
+        className="glass-facet pointer-events-none absolute -top-24 -right-20 size-[30rem] text-bone/[0.04]"
       />
 
       <Container className="relative">
-        <div className="grid gap-12 py-16 md:py-20 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-10">
+        <div className="grid gap-12 py-16 md:py-20 lg:grid-cols-4 lg:gap-10">
           {/* Company */}
           <div>
             <Logo tone="light" />
@@ -41,11 +40,34 @@ export function Footer() {
             <ul className="mt-7 space-y-2.5 text-[0.9rem]">
               <li className="flex items-center gap-2.5 text-bone/70">
                 <MapPin className="size-4 shrink-0 text-gold" aria-hidden="true" />
-                {business.addressLocality}
+                {business.googleMaps ? (
+                  <a
+                    href={business.googleMaps}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-gold"
+                  >
+                    {business.addressLine}
+                  </a>
+                ) : (
+                  business.addressLine
+                )}
               </li>
               <li className="flex items-center gap-2.5 text-bone/70">
                 <Clock className="size-4 shrink-0 text-gold" aria-hidden="true" />
                 {business.hoursLabel}
+              </li>
+              <li className="flex items-center gap-2.5 text-bone/70">
+                <Phone className="size-4 shrink-0 text-gold" aria-hidden="true" />
+                <a href={`tel:${business.phoneHref}`} className="transition-colors hover:text-gold">
+                  {business.phone}
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5 text-bone/70">
+                <Mail className="size-4 shrink-0 text-gold" aria-hidden="true" />
+                <a href={`mailto:${business.email}`} className="transition-colors hover:text-gold">
+                  {business.email}
+                </a>
               </li>
             </ul>
 
@@ -110,7 +132,7 @@ export function Footer() {
           {/* Areas + contact */}
           <div>
             <h2 className="t-eyebrow mb-5 text-gold">Service Areas</h2>
-            <ul className="mb-8 grid grid-cols-2 gap-x-4 gap-y-2.5 text-[0.92rem]">
+            <ul className="mb-8 grid w-fit grid-cols-2 gap-x-8 gap-y-2.5 text-[0.92rem]">
               {footerAreaSlugs.map((slug) => {
                 const area = getServiceArea(slug);
                 if (!area) return null;
@@ -123,24 +145,30 @@ export function Footer() {
             </ul>
 
             <h2 className="t-eyebrow mb-4 text-gold">Contact</h2>
-            <a
-              href={`tel:${business.phoneHref}`}
-              data-cta="phone"
-              data-location="footer"
-              className="flex items-center gap-2.5 font-display text-xl font-extrabold tracking-tight text-bone transition-colors hover:text-gold"
-            >
-              <Phone className="size-4 shrink-0 text-gold" aria-hidden="true" strokeWidth={2.5} />
-              {business.phone}
-            </a>
-            <a
-              href={`mailto:${business.email}`}
-              data-cta="email"
-              data-location="footer"
-              className="mt-3 flex items-start gap-2.5 text-[0.88rem] break-all text-bone/70 transition-colors hover:text-bone"
-            >
-              <Mail className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
-              {business.email}
-            </a>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href={`tel:${business.phoneHref}`}
+                  data-cta="phone"
+                  data-location="footer"
+                  className="inline-flex items-center gap-2.5 font-display text-xl font-extrabold tracking-tight text-bone transition-colors hover:text-gold"
+                >
+                  <Phone className="size-4 shrink-0 text-gold" aria-hidden="true" strokeWidth={2.5} />
+                  {business.phone}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${business.email}`}
+                  data-cta="email"
+                  data-location="footer"
+                  className="inline-flex items-start gap-2.5 text-[0.88rem] break-all text-bone/70 transition-colors hover:text-bone"
+                >
+                  <Mail className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
+                  {business.email}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 

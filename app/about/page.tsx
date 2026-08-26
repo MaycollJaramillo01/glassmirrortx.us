@@ -146,7 +146,7 @@ export default function AboutPage() {
       >
         <div
           aria-hidden="true"
-          className="rings pointer-events-none absolute -top-56 -left-40 size-[46rem] text-bone/[0.045]"
+          className="glass-facet pointer-events-none absolute -top-56 -left-40 size-[46rem] text-bone/[0.045]"
         />
         <div aria-hidden="true" className="grain pointer-events-none absolute inset-0" />
 

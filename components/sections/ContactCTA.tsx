@@ -45,7 +45,7 @@ export function ContactCTA({
     >
       <div
         aria-hidden="true"
-        className="rings pointer-events-none absolute -top-72 -left-48 size-[54rem] text-bone/[0.045]"
+        className="glass-facet pointer-events-none absolute -top-72 -left-48 size-[54rem] text-bone/[0.045]"
       />
       <div aria-hidden="true" className="grain pointer-events-none absolute inset-0" />
       <div

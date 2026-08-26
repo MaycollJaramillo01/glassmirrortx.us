@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 import { business, cta, principles } from "@/data/business";
+import { galleryItems } from "@/data/gallery";
 import { photos } from "@/data/photos";
 import { additionalCommunities, getServiceArea, primaryAreaSlugs } from "@/data/service-areas";
 import { getService } from "@/data/services";
@@ -32,7 +33,7 @@ const serviceHighlights = [
   },
   {
     slug: "custom-mirrors",
-    image: photos.mirrorWall,
+    image: photos.mirrorInstall,
     eyebrow: "Mirrors & walls",
     title: "Mirrors that open the room",
     copy: "Custom mirrors and mirrored walls sized for vanities, entries, gyms and commercial interiors.",
@@ -246,7 +247,7 @@ export function RedesignedHome() {
       <section className="relative isolate overflow-hidden bg-charcoal py-20 text-bone sm:py-24 lg:py-28">
         <div
           aria-hidden="true"
-          className="rings pointer-events-none absolute -top-64 -right-40 size-[48rem] text-bone/[0.045]"
+          className="glass-facet pointer-events-none absolute -top-64 -right-40 size-[48rem] text-bone/[0.045]"
         />
         <div aria-hidden="true" className="grain pointer-events-none absolute inset-0" />
 
@@ -415,30 +416,52 @@ export function RedesignedHome() {
       </section>
 
       <section id="how-we-work" className="bg-bone py-20 sm:py-24 lg:py-28">
-        <Container className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-4">
-            <Reveal>
-              <p className="eyebrow-line text-forest">How we work</p>
-            </Reveal>
-            <Reveal delay={70}>
-              <h2 className="home-h2 mt-6 text-charcoal">A clear plan before the first cut.</h2>
-            </Reveal>
-            <Reveal delay={130}>
-              <p className="mt-6 max-w-[28rem] text-[1rem] leading-relaxed text-muted">Good glass work starts before fabrication. We measure the site, set the sequence and keep the install part of a clean finish.</p>
-            </Reveal>
-            <Reveal kind="scale" delay={180} className="relative mt-9 min-h-[17rem] overflow-hidden">
-              <Image src={photos.mirrorInstall.src} alt={photos.mirrorInstall.alt} fill sizes="(max-width: 1023px) 100vw, 34vw" className="object-cover" />
-            </Reveal>
-          </div>
-          <ol className="lg:col-span-7 lg:col-start-6">
-            {workflow.map(([number, title, body], index) => (
-              <Reveal as="li" key={number} delay={index * 70} className="grid gap-4 border-t border-charcoal/15 py-7 sm:grid-cols-[3.5rem_10.5rem_1fr] sm:gap-6 sm:py-8">
-                <span className="font-display text-[0.72rem] font-bold tracking-[0.16em] text-gold">{number}</span>
-                <h3 className="font-display text-[1.1rem] font-extrabold tracking-tight text-charcoal">{title}</h3>
-                <p className="max-w-[34rem] text-[0.94rem] leading-relaxed text-muted">{body}</p>
+        <Container>
+          {/* Intro + steps share one top edge; the photo sits under both as a shared base. */}
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-x-16">
+            <div className="lg:col-span-5">
+              <Reveal>
+                <p className="eyebrow-line text-forest">How we work</p>
               </Reveal>
-            ))}
-          </ol>
+              <Reveal delay={70}>
+                <h2 className="home-h2 mt-6 text-charcoal">A clear plan before the first cut.</h2>
+              </Reveal>
+              <Reveal delay={130}>
+                <p className="mt-6 max-w-[28rem] text-[1rem] leading-relaxed text-muted">
+                  Good glass work starts before fabrication. We measure the site, set the sequence and keep
+                  the install part of a clean finish.
+                </p>
+              </Reveal>
+            </div>
+            <ol className="lg:col-span-7">
+              {workflow.map(([number, title, body], index) => (
+                <Reveal
+                  as="li"
+                  key={number}
+                  delay={index * 70}
+                  className="grid gap-4 border-t border-charcoal/15 py-6 first:border-t-0 first:pt-0 sm:grid-cols-[3.5rem_minmax(0,10.5rem)_1fr] sm:gap-6 sm:py-7 sm:first:pt-0"
+                >
+                  <span className="font-display text-[0.72rem] font-bold tracking-[0.16em] text-gold">
+                    {number}
+                  </span>
+                  <h3 className="font-display text-[1.1rem] font-extrabold tracking-tight text-charcoal">
+                    {title}
+                  </h3>
+                  <p className="max-w-[34rem] text-[0.94rem] leading-relaxed text-muted">{body}</p>
+                </Reveal>
+              ))}
+            </ol>
+          </div>
+
+          <Reveal kind="scale" delay={180} className="relative mt-12 aspect-[21/9] min-h-[14rem] overflow-hidden sm:mt-14 lg:mt-16">
+            <Image
+              src={photos.mirrorInstall.src}
+              alt={photos.mirrorInstall.alt}
+              fill
+              sizes="(max-width: 1023px) 100vw, 1120px"
+              className="object-cover"
+            />
+          </Reveal>
         </Container>
       </section>
 
@@ -460,8 +483,8 @@ export function RedesignedHome() {
 
           <div className="mt-10 grid gap-4 lg:grid-cols-12">
             <WorkPhoto
-              photo={photos.showerEnclosure}
-              caption="Custom shower enclosure"
+              photo={galleryItems[0]!}
+              caption={galleryItems[0]!.caption}
               aspect="aspect-[3/4] sm:aspect-[16/10] lg:aspect-[3/4]"
               sizes="(max-width: 1023px) 100vw, 41vw"
               className="lg:col-span-5 lg:h-full"
@@ -469,22 +492,22 @@ export function RedesignedHome() {
 
             <div className="grid gap-4 lg:col-span-7">
               <WorkPhoto
-                photo={photos.mirrorWall}
-                caption="Mirrored wall installation"
+                photo={galleryItems[2]!}
+                caption={galleryItems[2]!.caption}
                 aspect="aspect-[16/10] lg:aspect-[16/9]"
                 sizes="(max-width: 1023px) 100vw, 57vw"
                 delay={70}
               />
               <div className="grid gap-4 sm:grid-cols-2">
                 <WorkPhoto
-                  photo={photos.windowGlass}
-                  caption="Window glass"
+                  photo={galleryItems[5]!}
+                  caption={galleryItems[5]!.caption}
                   sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 28vw"
                   delay={140}
                 />
                 <WorkPhoto
-                  photo={photos.glassWorkAlt}
-                  caption="Glass installation"
+                  photo={galleryItems[9]!}
+                  caption={galleryItems[9]!.caption}
                   sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 28vw"
                   delay={210}
                 />
@@ -604,7 +627,7 @@ function WorkPhoto({
   sizes,
   delay = 0,
 }: {
-  photo: (typeof photos)[keyof typeof photos];
+  photo: { src: string; alt: string; width: number; height: number };
   caption: string;
   className?: string;
   aspect?: string;

@@ -53,7 +53,7 @@ export function Hero() {
 
       <div
         aria-hidden="true"
-        className="rings pointer-events-none absolute -bottom-56 -left-52 size-[46rem] text-bone/[0.045]"
+        className="glass-facet pointer-events-none absolute -bottom-56 -left-52 size-[46rem] text-bone/[0.045]"
       />
 
       <Container width="wide" className="relative z-10">
