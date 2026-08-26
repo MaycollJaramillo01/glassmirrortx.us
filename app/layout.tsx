@@ -59,8 +59,45 @@ export const metadata: Metadata = {
   authors: [{ name: business.legalName }],
   creator: business.legalName,
   publisher: business.legalName,
+  category: "Glass and Mirror Services",
+  keywords: [
+    "Martinez Orlyn Glass & Mirror",
+    "Houston glass company",
+    "custom shower enclosures Houston",
+    "custom mirrors Houston",
+    "window glass repair Houston",
+    "glass installation Houston TX",
+    "mirrored walls Houston",
+    "solar screens Houston",
+    "reglazing Houston",
+  ],
   icons: { icon: "/logo.png" },
   formatDetection: { telephone: true, address: false, email: true },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: business.legalName,
+    title:
+      "Glass & Mirror in Houston, TX | Martinez Orlyn Glass & Mirror",
+    description:
+      "Custom shower enclosures, mirrors, windows and glass repair for Houston homes and businesses. Licensed & insured.",
+    url: SITE_URL,
+    images: [
+      {
+        url: "/images/stock/hero-glass.webp",
+        width: 1400,
+        height: 933,
+        alt: "Modern home with large glass windows and sliding doors",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Glass & Mirror in Houston, TX | Martinez Orlyn Glass & Mirror",
+    description:
+      "Custom shower enclosures, mirrors, windows and glass repair. Licensed & insured. Call (832) 253-2925.",
+    images: ["/images/stock/hero-glass.webp"],
+  },
   verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
     ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
     : undefined,
@@ -79,6 +116,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en-US" data-scroll-behavior="smooth" className={`${archivo.variable} ${plex.variable}`}>
+      <head>
+        {/* Maycoll: primary llms.txt discovery for agents. */}
+        <link rel="describedby" href="/llms.txt" type="text/markdown" title="LLM site index" />
+        <link rel="alternate" href="/llms-full.txt" type="text/plain" title="LLM full site context" />
+      </head>
       <body className="min-h-dvh antialiased">
         <a
           href="#main"

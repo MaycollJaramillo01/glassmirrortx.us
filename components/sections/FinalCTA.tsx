@@ -30,7 +30,7 @@ export function FinalCTA({
     >
       <div
         aria-hidden="true"
-        className="rings pointer-events-none absolute -top-64 -right-40 size-[52rem] text-bone/[0.04]"
+        className="glass-facet pointer-events-none absolute -top-64 -right-40 size-[52rem] text-bone/[0.04]"
       />
       <div
         aria-hidden="true"

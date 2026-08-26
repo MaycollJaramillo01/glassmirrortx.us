@@ -32,13 +32,13 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-bone/10 bg-charcoal/94 text-bone backdrop-blur-md">
+      <header className="fixed inset-x-0 top-0 z-[100] border-b border-bone/10 bg-charcoal/94 text-bone backdrop-blur-md">
         {/* Utility bar. Desktop only — on phones this information is already
             one tap away in the header and the sticky call bar. */}
         <div className="hidden border-b border-bone/10 lg:block">
           <Container width="wide">
-            <div className="flex h-[46px] items-center justify-between gap-8">
-              <ul className="flex items-center gap-8">
+            <div className="flex h-[46px] items-center justify-between gap-6">
+              <ul className="flex min-w-0 items-center gap-6 xl:gap-8">
                 <UtilityItem icon={Mail} label="Email">
                   <a
                     href={`mailto:${business.email}`}
@@ -50,8 +50,8 @@ export function Header() {
                   </a>
                 </UtilityItem>
 
-                <UtilityItem icon={Clock} label="Every day">
-                  {business.hoursLabel}
+                <UtilityItem icon={Clock} label="Hours">
+                  {business.hoursLabelShort}
                 </UtilityItem>
 
                 <UtilityItem icon={Phone} label="Call us">
@@ -59,17 +59,22 @@ export function Header() {
                     href={`tel:${business.phoneHref}`}
                     data-cta="phone"
                     data-location="header_bar"
-                    className="link-underline transition-colors hover:text-gold"
+                    className="link-underline whitespace-nowrap transition-colors hover:text-gold"
                   >
                     {business.phone}
                   </a>
                 </UtilityItem>
               </ul>
 
-              <p className="inline-flex shrink-0 items-center gap-2 bg-forest px-4 py-1.5 font-display text-[0.72rem] font-bold tracking-[0.06em] text-bone">
+              <a
+                href={business.googleMaps}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex max-w-[16rem] shrink-0 items-center gap-2 bg-forest px-3 py-1.5 font-display text-[0.68rem] font-bold tracking-[0.04em] text-bone transition-colors hover:bg-forest-soft xl:max-w-none xl:px-4 xl:text-[0.72rem] xl:tracking-[0.06em]"
+              >
                 <MapPin className="size-3.5 shrink-0" aria-hidden="true" strokeWidth={2.4} />
-                {business.city} {business.state} {business.zip}
-              </p>
+                <span className="truncate">{business.streetAddress}, {business.city}, {business.stateCode} {business.zip}</span>
+              </a>
             </div>
           </Container>
         </div>
@@ -83,7 +88,7 @@ export function Header() {
                 {links.map((link) => {
                   const active = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
 
-                  // Services has fourteen entries, so it gets the mega menu.
+                  // Services has many entries, so it gets the mega menu.
                   if (link.href === "/services") {
                     return (
                       <li key={link.href}>

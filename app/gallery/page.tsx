@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 
 import { business } from "@/data/business";
-import { beforeAfterItems } from "@/data/gallery";
-import { photos } from "@/data/photos";
-import { serviceMedia } from "@/data/service-media";
+import { beforeAfterItems, galleryItems } from "@/data/gallery";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { buildBreadcrumbSchema, buildWebPageSchema, graph } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -29,6 +27,9 @@ const trail = [
   { name: "Gallery", href: "/gallery" },
 ];
 
+/** First company job photo — gallery hero stays real work, not stock. */
+const galleryHero = galleryItems[0];
+
 export default function GalleryPage() {
   return (
     <>
@@ -39,9 +40,11 @@ export default function GalleryPage() {
             The work should <span className="text-gold">speak for itself.</span>
           </>
         }
-        lead={`${serviceMedia.length} photographs from real ${business.name} projects across Houston and the surrounding communities — plus ${beforeAfterItems.length} before and after pairs.`}
+        lead={`Photographs from real ${business.name} projects across Houston and the surrounding communities${
+          beforeAfterItems.length > 0 ? ` — plus ${beforeAfterItems.length} before and after pairs` : ""
+        }.`}
         trail={trail}
-        image={photos.showerEnclosureAlt}
+        image={galleryHero}
       />
 
       <BeforeAfter />
@@ -53,7 +56,7 @@ export default function GalleryPage() {
               Every job, filed by service.
             </h2>
             <p className="mt-6 text-[1.02rem] leading-relaxed text-muted">
-              {serviceMedia.length} photographs from glass and mirror projects. Filter by the work
+              {galleryItems.length} photographs from glass and mirror projects. Filter by the work
               you are looking for.
             </p>
           </div>

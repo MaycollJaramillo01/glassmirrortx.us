@@ -1,22 +1,36 @@
 Información extraída — Martinez Orlyn Glass & Mirror
 
-Fuente: sitio publicado glassmirrortx.us + logo de la empresa.
-Nada inventado: no hay año de fundación, street address, 24/7 ni “free estimates” publicados.
+Fuente: sitio publicado glassmirrortx.us + logo de la empresa + directorios públicos
+con el mismo teléfono. Nada inventado de años, 24/7 ni “free estimates”.
 
 1. Datos principales
 Campo	Información
 Nombre comercial	Martinez Orlyn Glass & Mirror
 Actividad	Glass & Mirror / Custom Showers / Windows
+Dirección	9215 Solon Rd, Suite B4, Houston, TX 77064
 Ciudad base	Houston, Texas
 Teléfono	(832) 253-2925
 Email	martinezorlyn@yahoo.com
+WhatsApp	https://wa.me/18322532925
+Facebook	https://www.facebook.com/MartinezOrlyn
+Google Maps	https://maps.app.goo.gl/DzruyyJ2gzJxSssC6
+Horario (publicado en sitio anterior)	Lun–Dom 9:00 AM – 5:00 PM
+Facturas / cotizaciones	WhatsApp + email (confirmado por Orlando Garcia)
 Licencia (logo)	T189489 — Licensed & Insured
 Tagline (logo)	Experience and Professionalism
 Clientes	Residential & Commercial
 Naturaleza	Family-owned
 Sitio actual	https://glassmirrortx.us
-Facebook	https://www.facebook.com/MartinezOrlyn
-WhatsApp	https://wa.me/18322532925
+
+Notas:
+- En el sitio anterior solo había hrefs reales a Facebook y WhatsApp.
+- Instagram / Twitter / Google aparecían como iconos decorativos sin URL de perfil.
+- El schema viejo también listaba (832) 378-5179; el número confirmado por Orlando es (832) 253-2925.
+- El sitio viejo solo decía “Houston, Texas” (sin calle). La calle sale de listados
+  públicos (Wheree / directorios) con el mismo teléfono; Google Maps muestra pin
+  de ciudad. Confirmar con Orlando si Suite B4 es la oficial.
+- No usar horarios de agregadores (7 AM–9 PM / domingo 24h); el sitio propio
+  publica Lun–Dom 9–5.
 
 2. Servicios publicados
 - Custom Shower Enclosures
@@ -38,6 +52,8 @@ Houston, Katy, Sugar Land, Cypress, Spring, Tomball, Humble, Conroe, Alvin, Leag
 - Charcoal cool: --color-charcoal #0a1218
 - Bone: --color-bone #f4f8f9
 
-5. Plantilla
-Estructura tomada de egtreeservicesllc.com (Next.js 15 + Tailwind 4).
-Contenido EG Tree reemplazado; fuentes Archivo/Plex conservadas.
+5. Stack
+Next.js 15 + Tailwind 4 + Archivo/Plex (self-hosted).
+AEO / SEO: public/llms.txt + llms-full.txt (glass-only disambiguation),
+robots.ts + sitemap.ts (Maycoll), JSON-LD LocalBusiness + OfferCatalog,
+describedby → /llms.txt.

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { photos } from "@/data/photos";
+import { galleryItems } from "@/data/gallery";
 import { Container, Section } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -7,14 +7,14 @@ import { Reveal } from "@/components/animations/Reveal";
 import { cn } from "@/lib/utils/cn";
 
 /**
- * Bento composition — mixed aspect ratios rather than a grid of equal squares.
+ * Bento of real company job photos — not stock. Full set lives on /gallery.
  */
 const picks = [
-  { photo: photos.showerEnclosure, span: "md:col-span-3 md:row-span-2", caption: "Custom shower enclosure" },
-  { photo: photos.mirrorWall, span: "md:col-span-5", caption: "Mirrored wall" },
-  { photo: photos.windowGlass, span: "md:col-span-4", caption: "Window glass" },
-  { photo: photos.mirrorInstall, span: "md:col-span-4", caption: "Mirror installation" },
-  { photo: photos.glassWorkAlt, span: "md:col-span-5", caption: "Glass installation" },
+  { photo: galleryItems[0]!, span: "md:col-span-3 md:row-span-2" },
+  { photo: galleryItems[2]!, span: "md:col-span-5" },
+  { photo: galleryItems[5]!, span: "md:col-span-4" },
+  { photo: galleryItems[3]!, span: "md:col-span-4" },
+  { photo: galleryItems[9]!, span: "md:col-span-5" },
 ] as const;
 
 export function GallerySection() {
@@ -67,7 +67,7 @@ export function GallerySection() {
                 className="absolute inset-0 bg-linear-to-t from-charcoal/85 via-charcoal/10 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100"
               />
               <p className="absolute inset-x-0 bottom-0 p-5 text-[0.82rem] leading-snug font-medium text-bone">
-                {item.caption}
+                {item.photo.caption}
               </p>
             </Reveal>
           ))}

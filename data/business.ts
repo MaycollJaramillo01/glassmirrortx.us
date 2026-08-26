@@ -2,9 +2,10 @@
  * Single source of truth for company facts.
  *
  * Everything here is taken from the company's own published information
- * (glassmirrortx.us and the published logo). Nothing in this file may be
- * invented: no awards, review counts, crew size, founding year, street
- * address or response times. If a fact is not confirmed it does not belong here.
+ * (glassmirrortx.us, logo, Google Maps profile link) plus the street address
+ * published across business directories that match this phone number.
+ * Nothing else may be invented: no awards, review counts, crew size,
+ * founding year or response times.
  */
 
 export const business = {
@@ -15,23 +16,29 @@ export const business = {
   phoneHref: "+18322532925",
   email: "martinezorlyn@yahoo.com",
 
+  /** Street address from public business listings matching this phone. */
+  streetAddress: "9215 Solon Rd, Suite B4",
   city: "Houston",
   state: "Texas",
   stateCode: "TX",
-  /** No street address is published on the current site, so none is claimed. */
-  zip: "",
+  zip: "77064",
   addressLocality: "Houston, TX",
+  /** Full line for footer, contact and schema. */
+  addressLine: "9215 Solon Rd, Suite B4, Houston, TX 77064",
 
   /** Published on the company logo. */
   license: "T189489",
   tagline: "Experience and Professionalism",
 
   /**
-   * Hours are not published as a fixed schedule on the current site.
-   * Customer support is reachable by phone during business contact.
+   * Hours published on the previous site schema (Mon–Sun 09:00–17:00).
+   * Appointments are still scheduled by phone / WhatsApp / email.
    */
   availability: "By appointment",
-  hoursLabel: "Call to schedule an appointment",
+  hoursLabel: "Monday – Sunday, 9:00 AM – 5:00 PM",
+  /** Shorter label for the crowded header utility bar. */
+  hoursLabelShort: "Mon – Sun, 9 AM – 5 PM",
+  openingHours: ["Mo-Su 09:00-17:00"],
 
   /**
    * The site says "years of hands-on experience" without a specific number.
@@ -56,16 +63,28 @@ export const business = {
     "Appointment Scheduling",
   ],
 
+  /**
+   * Profiles confirmed on the previous live site (real hrefs, not decorative icons).
+   * Instagram / X logos appeared on the old site without profile URLs — do not invent them.
+   */
   social: {
     facebook: "https://www.facebook.com/MartinezOrlyn",
   },
 
+  /** Google Maps short link published on the previous site embed. */
+  googleMaps: "https://maps.app.goo.gl/DzruyyJ2gzJxSssC6",
+
   messenger: "https://m.me/MartinezOrlyn",
   whatsapp: "https://wa.me/18322532925",
+
+  /**
+   * Invoices / estimates are sent to WhatsApp and email per owner (Orlando Garcia).
+   */
+  invoiceChannels: ["whatsapp", "email"] as const,
 } as const;
 
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://glassmirrortx.us"
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://glassmirrortx.us"
 ).replace(/\/$/, "");
 
 /**

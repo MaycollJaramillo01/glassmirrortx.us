@@ -105,23 +105,59 @@
 
 /* --------------------------------------------------------------------------
    Interactive service map
+   Leaflet panes default to z-index 200–700. Keep them inside this stacking
+   context so the map never covers the fixed site header (z-50 / z-[100]).
    -------------------------------------------------------------------------- */
 
-.eg-service-map .leaflet-control-attribution {
+.glass-service-map {
+  isolation: isolate;
+  contain: layout paint;
+}
+
+.glass-service-map .leaflet-container {
+  z-index: 0;
+}
+
+.glass-service-map .leaflet-pane,
+.glass-service-map .leaflet-top,
+.glass-service-map .leaflet-bottom,
+.glass-service-map .leaflet-control {
+  z-index: auto !important;
+}
+
+.glass-service-map .leaflet-map-pane {
+  z-index: 1 !important;
+}
+
+.glass-service-map .leaflet-tile-pane {
+  z-index: 1 !important;
+}
+
+.glass-service-map .leaflet-overlay-pane {
+  z-index: 2 !important;
+}
+
+.glass-service-map .leaflet-marker-pane,
+.glass-service-map .leaflet-tooltip-pane,
+.glass-service-map .leaflet-shadow-pane {
+  z-index: 3 !important;
+}
+
+.glass-service-map .leaflet-control-attribution {
   background: color-mix(in srgb, var(--color-bone) 92%, transparent);
   color: var(--color-muted);
   font-size: 0.65rem;
 }
 
-.eg-service-map .leaflet-control-attribution a {
+.glass-service-map .leaflet-control-attribution a {
   color: var(--color-forest);
 }
 
-.eg-service-map .leaflet-tooltip {
+.glass-service-map .leaflet-tooltip {
   border: 1px solid color-mix(in srgb, var(--color-bone) 75%, transparent);
   border-radius: 0;
   background: var(--color-charcoal);
-  box-shadow: 0 2px 10px rgb(8 12 9 / 22%);
+  box-shadow: 0 2px 10px rgb(10 18 24 / 22%);
   color: var(--color-bone);
   font-family: var(--font-display);
   font-size: 0.62rem;
@@ -131,7 +167,7 @@
   text-transform: uppercase;
 }
 
-.eg-service-map .leaflet-tooltip-top::before {
+.glass-service-map .leaflet-tooltip-top::before {
   border-top-color: var(--color-charcoal);
 }
 
@@ -309,15 +345,30 @@
     transform: scaleX(1);
   }
 
-  /* Concentric tree-ring motif, used sparingly as a background detail. */
-  .rings {
-    background-image: repeating-radial-gradient(
-      circle at var(--rings-x, 50%) var(--rings-y, 50%),
-      transparent 0,
-      transparent 26px,
-      currentColor 26px,
-      currentColor 27px
-    );
+  /*
+    Glass-facet motif — diamond lattice that echoes the logo’s pane mark.
+    Replaces the old concentric “tree ring” texture from the prior template.
+  */
+  .glass-facet {
+    background-image:
+      linear-gradient(
+        135deg,
+        transparent 47.5%,
+        currentColor 47.5%,
+        currentColor 48.5%,
+        transparent 48.5%
+      ),
+      linear-gradient(
+        45deg,
+        transparent 47.5%,
+        currentColor 47.5%,
+        currentColor 48.5%,
+        transparent 48.5%
+      );
+    background-size: 52px 52px;
+    background-position:
+      0 0,
+      26px 0;
   }
 
   /* Underline that grows on hover for text links. */
@@ -350,13 +401,35 @@
 
   /* Home redesign: high-contrast editorial type and utility links. */
   .hero-hook {
-    max-width: 13ch;
+    max-width: 14ch;
     font-family: var(--font-display);
     font-size: clamp(2.7rem, 4.8vw, 4.8rem);
     font-weight: 800;
     line-height: 0.95;
     letter-spacing: -0.055em;
     text-wrap: balance;
+  }
+
+  .hero-video {
+    z-index: 0;
+    filter: saturate(0.72) contrast(1.06) brightness(0.84);
+    transform: scale(1.025);
+  }
+
+  .hero-glass-grid {
+    opacity: 0.18;
+    background-image:
+      linear-gradient(90deg, transparent 0 24%, rgb(244 248 249 / 22%) 24% 24.15%, transparent 24.15% 72%, rgb(244 248 249 / 16%) 72% 72.15%, transparent 72.15%),
+      linear-gradient(180deg, transparent 0 32%, rgb(244 248 249 / 16%) 32% 32.15%, transparent 32.15% 68%, rgb(244 248 249 / 12%) 68% 68.15%, transparent 68.15%);
+  }
+
+  .hero-glass-panel {
+    border: 1px solid rgb(244 248 249 / 20%);
+    background: linear-gradient(145deg, rgb(10 18 24 / 58%), rgb(10 18 24 / 34%));
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 10%),
+      0 24px 70px rgb(3 9 13 / 34%);
+    backdrop-filter: blur(14px) saturate(1.1);
   }
 
   .home-display {
@@ -476,5 +549,9 @@
 
   .hero-in {
     opacity: 1;
+  }
+
+  .hero-video {
+    display: none;
   }
 }

@@ -11,12 +11,12 @@ import { cn } from "@/lib/utils/cn";
 const rail = [
   { label: "View all services", href: "/services" },
   { label: "Our gallery", href: "/gallery" },
-  { label: "Book a free estimate", href: "/contact" },
+  { label: "Get an appointment", href: "/contact" },
 ] as const;
 
 /**
- * Services dropdown. There are fourteen services across two families, which is
- * too many for a single column, so the panel is a full-width grid.
+ * Services dropdown. Glass services span several families, which is too many
+ * for a single column, so the panel is a full-width grid.
  *
  * Opens on hover and on focus, closes on Escape, on outside click and when the
  * pointer leaves — so it works with a mouse, a keyboard and a screen reader

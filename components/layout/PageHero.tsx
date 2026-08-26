@@ -47,7 +47,7 @@ export function PageHero({ eyebrow, title, lead, trail, image, children, classNa
       ) : (
         <div
           aria-hidden="true"
-          className="rings pointer-events-none absolute -top-52 -right-32 size-[44rem] text-bone/[0.05]"
+          className="glass-facet pointer-events-none absolute -top-52 -right-32 size-[44rem] text-bone/[0.05]"
         />
       )}
 

@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { SITE_URL, business } from "@/data/business";
 import type { Service, ServiceArea } from "@/types";
 
-/** Single OG image for the site: a real job photo, not a rendered graphic. */
+/** Default Open Graph image: stock glass photography for the site brand. */
 const OG_IMAGE = {
-  url: "/images/hero/houston-glass-hero.webp",
-  width: 2040,
-  height: 1148,
-  alt: "Interior view through residential glass looking out to a Houston-area backyard",
+  url: "/images/stock/hero-glass.webp",
+  width: 1400,
+  height: 933,
+  alt: "Modern home with large glass windows and sliding doors",
 };
 
 interface BuildOptions {
@@ -53,6 +53,10 @@ export function buildMetadata({
       title,
       description,
       images: [image.url],
+    },
+    other: {
+      "ai:domain_category": "glass-and-mirror-services",
+      "ai:not_category": "tree-service,landscaping,land-clearing",
     },
   };
 }

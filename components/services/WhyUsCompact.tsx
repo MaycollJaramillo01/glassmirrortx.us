@@ -63,6 +63,3 @@ export function WhyUsCompact() {
     </Section>
   );
 }
-
-/** @deprecated Prefer WhyUsCompact */
-export const WhyEGCompact = WhyUsCompact;

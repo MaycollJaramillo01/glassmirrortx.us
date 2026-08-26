@@ -76,7 +76,7 @@ export function CompanyIntro() {
               <div className="relative overflow-hidden bg-charcoal px-8 py-7 sm:px-10 sm:py-8">
                 <div
                   aria-hidden="true"
-                  className="rings pointer-events-none absolute -top-16 -right-16 size-56 text-bone/[0.06]"
+                  className="glass-facet pointer-events-none absolute -top-16 -right-16 size-56 text-bone/[0.06]"
                 />
                 <p className="t-stat relative text-gold">{business.experienceValue}</p>
                 <p className="relative mt-2.5 font-display text-[0.7rem] leading-tight font-bold tracking-[0.2em] text-bone uppercase">
