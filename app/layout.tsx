@@ -79,6 +79,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en-US" data-scroll-behavior="smooth" className={`${archivo.variable} ${plex.variable}`}>
+      <head>
+        <link rel="describedby" href="/llms.txt" type="text/markdown" />
+      </head>
       <body className="min-h-dvh antialiased">
         <a
           href="#main"

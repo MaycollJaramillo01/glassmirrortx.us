@@ -5,6 +5,8 @@ import Link from "next/link";
 import { business } from "@/data/business";
 import { additionalCommunities, getServiceArea, primaryAreaSlugs } from "@/data/service-areas";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { buildBreadcrumbSchema, buildWebPageSchema, graph } from "@/lib/schema";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
 
 const title = "Glass & Mirror Service Areas | Martinez Orlyn Glass & Mirror";
@@ -13,6 +15,11 @@ const description = `${business.name} serves Houston and nearby communities acro
 export const metadata: Metadata = buildMetadata({ title, description, path: "/service-areas" });
 
 export default function ServiceAreasPage() {
+  const trail = [
+    { name: "Home", href: "/" },
+    { name: "Service Areas", href: "/service-areas" },
+  ];
+
   return (
     <>
       <section className="bg-charcoal pb-16 pt-32 text-bone sm:pb-20 sm:pt-40">
@@ -42,6 +49,13 @@ export default function ServiceAreasPage() {
           </div>
         </Container>
       </section>
+
+      <JsonLd
+        data={graph(
+          buildWebPageSchema("/service-areas", title, description),
+          buildBreadcrumbSchema(trail),
+        )}
+      />
     </>
   );
 }

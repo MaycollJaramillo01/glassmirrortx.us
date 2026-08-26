@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/animations/Reveal";
 import { ServiceAreaMap } from "@/components/maps/ServiceAreaMap";
+import { HeroBackgroundVideo } from "@/components/sections/HeroBackgroundVideo";
 
 const serviceHighlights = [
   {
@@ -49,7 +50,7 @@ const serviceHighlights = [
   },
 ] as const;
 
-const faqs = [
+export const homePageFaqs = [
   {
     question: "How do I get a price?",
     answer:
@@ -90,40 +91,43 @@ export function RedesignedHome() {
 
   return (
     <div className="home-redesign">
-      <section className="relative isolate min-h-[min(700px,86dvh)] overflow-hidden bg-charcoal text-bone">
+      <section className="relative isolate min-h-[min(760px,88dvh)] overflow-hidden bg-charcoal text-bone">
         <Image
-          src={photos.heroGlass.src}
+          src={photos.showerEnclosure.src}
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-center opacity-70"
           aria-hidden="true"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-charcoal/70" />
+        <HeroBackgroundVideo />
+        <div aria-hidden="true" className="absolute inset-0 bg-charcoal/40" />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,12,9,0.98)_0%,rgba(8,12,9,0.88)_36%,rgba(8,12,9,0.26)_76%,rgba(8,12,9,0.48)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,12,17,0.98)_0%,rgba(5,12,17,0.91)_42%,rgba(5,12,17,0.35)_76%,rgba(5,12,17,0.58)_100%)]"
         />
+        <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(20,196,196,0.18),transparent_28%)]" />
+        <div aria-hidden="true" className="hero-glass-grid pointer-events-none absolute inset-y-0 right-0 hidden w-[44%] lg:block" />
         <div aria-hidden="true" className="grain pointer-events-none absolute inset-0" />
 
         <Container
           width="wide"
-          className="relative z-10 grid min-h-[min(700px,86dvh)] items-end gap-12 pb-14 pt-28 sm:pb-16 lg:grid-cols-12 lg:items-center lg:gap-10 lg:pb-18"
+          className="relative z-10 grid min-h-[min(760px,88dvh)] items-end gap-12 pb-12 pt-28 sm:pb-16 lg:grid-cols-12 lg:items-center lg:gap-12 lg:pb-18"
         >
-          <div className="max-w-[35rem] lg:col-span-7">
+          <div className="max-w-[42rem] lg:col-span-7">
             <Reveal kind="right">
-              <p className="eyebrow-line text-gold">Houston, TX · glass &amp; mirror · by appointment</p>
+              <p className="eyebrow-line text-gold">Martinez Orlyn · Houston, Texas</p>
             </Reveal>
             <Reveal kind="up" delay={80}>
               <h1 className="hero-hook mt-7 text-bone">
-                Martinez Orlyn Glass &amp; Mirror.{" "}
-                <span className="text-gold">Done right.</span>
+                Houston glass, mirrors &amp; showers.{" "}
+                <span className="text-gold">Measured to fit.</span>
               </h1>
             </Reveal>
             <Reveal kind="up" delay={150}>
-              <p className="mt-6 max-w-[34rem] text-[1rem] leading-relaxed text-bone/78 sm:text-[1.05rem]">
-                Custom shower enclosures, mirrors, windows and glass repair for Houston-area homes and businesses.
+              <p className="mt-6 max-w-[38rem] text-[1rem] leading-relaxed text-bone/78 sm:text-[1.08rem]">
+                Custom shower enclosures, mirrors, window glass and repair for Houston-area homes and commercial spaces—planned around the opening, finish and everyday use.
               </p>
             </Reveal>
             <Reveal kind="up" delay={230}>
@@ -149,17 +153,36 @@ export function RedesignedHome() {
                 </a>
               </div>
             </Reveal>
+
+            <Reveal kind="up" delay={300}>
+              <ul className="mt-9 flex flex-wrap gap-x-6 gap-y-3 border-t border-bone/18 pt-5 text-[0.78rem] font-semibold tracking-[0.04em] text-bone/72">
+                <li>Licensed &amp; insured</li>
+                <li>Family-owned</li>
+                <li>Residential + commercial</li>
+              </ul>
+            </Reveal>
           </div>
 
-          <Reveal kind="left" delay={180} className="hidden border-l border-bone/25 pl-8 lg:col-span-4 lg:col-start-9 lg:block">
-            <p className="font-display text-[0.68rem] font-bold tracking-[0.16em] text-bone/55 uppercase">What we handle</p>
-            <ul className="mt-5 space-y-3 font-display text-[1rem] font-bold tracking-[-0.01em] text-bone">
-              <li><span className="mr-3 text-gold">01</span>Shower enclosures</li>
-              <li><span className="mr-3 text-gold">02</span>Custom mirrors</li>
-              <li><span className="mr-3 text-gold">03</span>Windows &amp; doors</li>
-              <li><span className="mr-3 text-gold">04</span>Glass repair</li>
-            </ul>
-            <p className="mt-7 max-w-[14rem] text-[0.86rem] leading-relaxed text-bone/65">Licensed &amp; insured. Family-owned. Residential and commercial work.</p>
+          <Reveal kind="left" delay={180} className="hero-glass-panel hidden p-7 lg:col-span-4 lg:col-start-9 lg:block xl:p-9">
+            <p className="font-display text-[0.68rem] font-bold tracking-[0.16em] text-gold uppercase">From measure to install</p>
+            <p className="mt-5 max-w-[16ch] font-display text-[1.7rem] font-extrabold leading-[1.03] tracking-[-0.035em] text-bone">
+              The opening leads. The glass follows.
+            </p>
+            <ol className="mt-8 border-t border-bone/20">
+              {[
+                ["01", "Site measure", "Opening, access and finish"],
+                ["02", "Clear scope", "Glass, hardware and schedule"],
+                ["03", "Clean install", "Fit checked before handoff"],
+              ].map(([number, title, detail]) => (
+                <li key={number} className="grid grid-cols-[2rem_1fr] gap-3 border-b border-bone/14 py-4">
+                  <span className="font-display text-[0.68rem] font-bold text-gold">{number}</span>
+                  <span>
+                    <strong className="block font-display text-[0.9rem] font-bold text-bone">{title}</strong>
+                    <span className="mt-1 block text-[0.78rem] leading-relaxed text-bone/58">{detail}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
           </Reveal>
         </Container>
       </section>
@@ -516,7 +539,7 @@ export function RedesignedHome() {
             </Reveal>
           </div>
           <div className="lg:col-span-7 lg:col-start-6">
-            {faqs.map(({ question, answer }, index) => (
+            {homePageFaqs.map(({ question, answer }, index) => (
               <Reveal key={question} delay={index * 50}>
                 <details className="group border-t border-charcoal/15 py-5 last:border-b">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-[1.05rem] font-bold tracking-tight text-charcoal [&::-webkit-details-marker]:hidden">

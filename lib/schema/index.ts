@@ -14,12 +14,18 @@ const WEBSITE_ID = `${SITE_URL}/#website`;
 
 export function buildLocalBusinessSchema() {
   return {
-    "@type": "LocalBusiness",
+    "@type": "HomeAndConstructionBusiness",
     "@id": BUSINESS_ID,
     name: business.legalName,
     url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
     telephone: business.phone,
     email: business.email,
+    identifier: {
+      "@type": "PropertyValue",
+      name: "License",
+      value: business.license,
+    },
     sameAs: Object.values(business.social).filter(Boolean),
     description:
       "Glass and mirror services for residential and commercial properties in Houston, Texas and surrounding communities — custom shower enclosures, mirrors, windows, solar screens and glass repair.",
@@ -27,23 +33,32 @@ export function buildLocalBusinessSchema() {
       "@type": "PostalAddress",
       addressLocality: business.city,
       addressRegion: business.stateCode,
-      postalCode: business.zip,
       addressCountry: "US",
     },
-    areaServed: {
-      "@type": "GeoCircle",
-      geoMidpoint: {
-        "@type": "GeoCoordinates",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: business.city,
-          addressRegion: business.stateCode,
-          postalCode: business.zip,
-          addressCountry: "US",
-        },
-      },
-      geoRadius: String(Math.round(business.radiusMiles * 1609.34)),
+    areaServed: [
+      { "@type": "City", name: `${business.city}, ${business.stateCode}` },
+      ...business.counties.map((county) => ({
+        "@type": "AdministrativeArea",
+        name: `${county}, ${business.stateCode}`,
+      })),
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: business.phoneHref,
+      contactType: "appointments and estimates",
+      areaServed: "US-TX",
     },
+    knowsAbout: [
+      "Custom shower enclosures",
+      "Shower doors",
+      "Custom mirrors",
+      "Mirrored walls",
+      "Window glass",
+      "Door glass",
+      "Double-pane glass",
+      "Glass repair and reglazing",
+      "Solar screens",
+    ],
     image: `${SITE_URL}/images/hero/houston-glass-hero.webp`,
   };
 }
@@ -122,7 +137,7 @@ export function buildAreaServiceSchema(area: ServiceArea) {
  * FAQPage markup. Only ever emitted on pages where the same questions and
  * answers are visible to the user, which is what the guidelines require.
  */
-export function buildFaqSchema(faqs: FAQ[]) {
+export function buildFaqSchema(faqs: readonly FAQ[]) {
   return {
     "@type": "FAQPage",
     mainEntity: faqs.map((faq) => ({

@@ -61,7 +61,7 @@ export function ContactBubbles() {
           data-cta={key}
           data-location="contact_bubble"
           {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-          className={`group flex size-12 items-center justify-center rounded-full shadow-[0_4px_14px_rgba(8,12,9,0.28)] transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 lg:size-[52px] ${className}`}
+          className={`group size-12 items-center justify-center rounded-full shadow-[0_4px_14px_rgba(8,12,9,0.28)] transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 lg:size-[52px] ${key === "whatsapp" ? "flex" : "hidden lg:flex"} ${className}`}
         >
           {icon}
         </a>

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 import { buildMetadata } from "@/lib/seo/metadata";
-import { buildWebPageSchema, graph } from "@/lib/schema";
+import { buildFaqSchema, buildWebPageSchema, graph } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { RedesignedHome } from "@/components/sections/RedesignedHome";
+import { homePageFaqs, RedesignedHome } from "@/components/sections/RedesignedHome";
 
 const TITLE =
   "Glass & Mirror in Houston, TX | Showers, Mirrors & Windows | Martinez Orlyn Glass & Mirror";
@@ -21,7 +21,12 @@ export default function HomePage() {
     <>
       <RedesignedHome />
 
-      <JsonLd data={graph(buildWebPageSchema("/", TITLE, DESCRIPTION))} />
+      <JsonLd
+        data={graph(
+          buildWebPageSchema("/", TITLE, DESCRIPTION),
+          buildFaqSchema(homePageFaqs),
+        )}
+      />
     </>
   );
 }

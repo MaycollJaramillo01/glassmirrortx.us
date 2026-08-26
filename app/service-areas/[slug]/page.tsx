@@ -8,6 +8,14 @@ import { business, cta } from "@/data/business";
 import { photos } from "@/data/photos";
 import { getServiceArea, serviceAreaSlugs } from "@/data/service-areas";
 import { buildMetadata } from "@/lib/seo/metadata";
+import {
+  buildAreaServiceSchema,
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildWebPageSchema,
+  graph,
+} from "@/lib/schema";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
@@ -26,6 +34,12 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
   const { slug } = await params;
   const area = getServiceArea(slug);
   if (!area) notFound();
+  const path = `/service-areas/${area.slug}`;
+  const trail = [
+    { name: "Home", href: "/" },
+    { name: "Service Areas", href: "/service-areas" },
+    { name: `${area.city}, ${area.stateCode}`, href: path },
+  ];
 
   return (
     <>
@@ -64,7 +78,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
         <Container>
           <p className="eyebrow-line text-forest">Common calls in {area.city}</p>
           <div className="mt-8 grid gap-0 border-t border-charcoal/15 sm:grid-cols-2 lg:grid-cols-4">
-            {area.featuredServices.map((item) => <div key={item.slug} className="border-b border-charcoal/15 py-6 sm:px-6 sm:first:pl-0 lg:border-r lg:last:border-r-0"><h3 className="font-display text-[1.1rem] font-extrabold tracking-tight text-charcoal">{item.slug.replaceAll("-", " ")}</h3><p className="mt-3 text-[0.9rem] leading-relaxed text-muted">{item.note}</p></div>)}
+            {area.featuredServices.map((item) => <div key={item.slug} className="border-b border-charcoal/15 py-6 sm:px-6 sm:first:pl-0 lg:border-r lg:last:border-r-0"><h3 className="font-display text-[1.1rem] font-extrabold tracking-tight text-charcoal"><Link href={`/services/${item.slug}`} className="capitalize transition-colors hover:text-forest">{item.slug.replaceAll("-", " ")}</Link></h3><p className="mt-3 text-[0.9rem] leading-relaxed text-muted">{item.note}</p></div>)}
           </div>
           <ul className="mt-10 grid gap-3 sm:grid-cols-2">
             <li className="flex items-start gap-3 text-[0.92rem] text-charcoal"><Plus className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" strokeWidth={3} /> Appointments by request</li>
@@ -73,9 +87,38 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ sl
         </Container>
       </section>
 
+      <section className="bg-bone py-20 sm:py-28" aria-labelledby="area-faq-heading">
+        <Container className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <p className="eyebrow-line text-forest">Local questions</p>
+            <h2 id="area-faq-heading" className="home-h2 mt-6 text-charcoal">Glass work in {area.city}, answered.</h2>
+          </div>
+          <div className="lg:col-span-7 lg:col-start-6">
+            {area.faq.map(({ question, answer }) => (
+              <details key={question} className="group border-t border-charcoal/15 py-5 last:border-b">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-[1.05rem] font-bold tracking-tight text-charcoal [&::-webkit-details-marker]:hidden">
+                  {question}
+                  <span className="text-2xl font-normal leading-none text-gold transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="measure mt-4 text-[0.96rem] leading-relaxed text-muted">{answer}</p>
+              </details>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       <section className="bg-gold py-16 sm:py-20">
         <Container className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"><div><p className="font-display text-2xl font-extrabold tracking-tight text-charcoal">Need glass or mirror work in {area.city}?</p><p className="mt-2 text-[0.94rem] text-charcoal/70">Tell us what you need and we will help you schedule the job.</p></div><Button href="/contact" variant="secondary" withArrow data-cta="estimate" data-location="service_area_cta">{cta.estimate}</Button></Container>
       </section>
+
+      <JsonLd
+        data={graph(
+          buildWebPageSchema(path, area.seoTitle, area.metaDescription),
+          buildAreaServiceSchema(area),
+          buildBreadcrumbSchema(trail),
+          buildFaqSchema(area.faq),
+        )}
+      />
     </>
   );
 }
