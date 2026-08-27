@@ -1,54 +1,81 @@
-import { Quote } from "lucide-react";
-import { testimonials } from "@/data/gallery";
+import { Star } from "lucide-react";
+
+import { googleReviews, testimonials } from "@/data/reviews";
+import { ReviewsCarousel } from "@/components/sections/ReviewsCarousel";
 import { Container, Section } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/animations/Reveal";
 
 /**
- * Renders nothing while data/gallery.ts `testimonials` is empty.
- *
- * That is deliberate. Inventing customer quotes, star ratings or review counts
- * would be fabricating evidence, so the section stays out of the page until
- * real, attributable reviews are added — at which point it appears on its own.
+ * Google reviews strip for the home page.
+ * Rating summary + auto-advancing carousel of curated recent Google quotes.
  */
 export function TestimonialsSection() {
-  if (testimonials.length === 0) return null;
+  if (!googleReviews.count && testimonials.length === 0) return null;
 
   return (
-    <Section className="bg-forest" aria-labelledby="reviews-heading">
+    <Section className="bg-charcoal text-bone" aria-labelledby="reviews-heading">
       <Container>
-        <div className="max-w-2xl">
-          <Reveal>
-            <Eyebrow tone="light">What Customers Say</Eyebrow>
-          </Reveal>
-          <Reveal delay={60}>
-            <h2 id="reviews-heading" className="t-h2 mt-6 text-bone">
-              In their words
-            </h2>
+        <div className="flex flex-col gap-8 border-b border-charcoal-line pb-10 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <Reveal>
+              <p className="eyebrow-line text-gold">Google reviews</p>
+            </Reveal>
+            <Reveal delay={60}>
+              <h2 id="reviews-heading" className="home-h2 mt-6 text-bone">
+                Rated by Houston customers.
+              </h2>
+            </Reveal>
+            <Reveal delay={110}>
+              <p className="mt-5 max-w-[36rem] text-[1rem] leading-relaxed text-bone/70">
+                Recent Google reviews for Martinez Orlyn Glass & Mirror — showers, mirrors,
+                windows and glass repair.
+              </p>
+            </Reveal>
+          </div>
+
+          <Reveal delay={140}>
+            <a
+              href={googleReviews.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex flex-col gap-3 border border-bone/20 bg-charcoal-soft px-6 py-5 transition-colors hover:border-gold"
+            >
+              <span className="flex items-center gap-3">
+                <span className="font-display text-[2.5rem] leading-none font-extrabold tracking-tight text-bone">
+                  {googleReviews.rating.toFixed(1)}
+                </span>
+                <StarRow rating={googleReviews.rating} />
+              </span>
+              <span className="text-[0.82rem] text-bone/65">
+                Based on {googleReviews.count.toLocaleString("en-US")} {googleReviews.label} reviews
+              </span>
+              <span className="font-display text-[0.7rem] font-bold tracking-[0.12em] text-gold uppercase">
+                Read reviews on Google →
+              </span>
+            </a>
           </Reveal>
         </div>
 
-        <ul className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((item, i) => (
-            <Reveal as="li" key={`${item.author}-${i}`} delay={i * 90}>
-              <figure className="flex h-full flex-col bg-forest-deep/60 p-8">
-                <Quote className="size-7 shrink-0 text-gold" aria-hidden="true" />
-                <blockquote className="mt-5 flex-1 text-[0.98rem] leading-relaxed text-bone/85">
-                  {item.quote}
-                </blockquote>
-                <figcaption className="mt-6 border-t border-bone/15 pt-4">
-                  <span className="block font-display text-[0.95rem] font-bold text-bone">
-                    {item.author}
-                  </span>
-                  <span className="mt-0.5 block text-[0.8rem] text-bone/55">
-                    {item.location} · {item.source}
-                  </span>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </ul>
+        <Reveal delay={160}>
+          <ReviewsCarousel items={testimonials} />
+        </Reveal>
       </Container>
     </Section>
+  );
+}
+
+function StarRow({ rating }: { rating: number }) {
+  const full = Math.round(rating);
+  return (
+    <span className="inline-flex items-center gap-0.5" aria-label={`${rating} out of 5 stars`}>
+      {Array.from({ length: 5 }, (_, i) => (
+        <Star
+          key={i}
+          className={i < full ? "size-4 fill-gold text-gold" : "size-4 text-bone/25"}
+          aria-hidden="true"
+          strokeWidth={2}
+        />
+      ))}
+    </span>
   );
 }

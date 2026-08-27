@@ -74,6 +74,13 @@ export const business = {
   /** Google Maps short link published on the previous site embed. */
   googleMaps: "https://maps.app.goo.gl/DzruyyJ2gzJxSssC6",
 
+  /**
+   * Google Business Profile rating (Knowledge Panel, Aug 2026).
+   * Featured quotes live in data/reviews.ts.
+   */
+  googleRating: 4.9,
+  googleReviewCount: 158,
+
   messenger: "https://m.me/MartinezOrlyn",
   whatsapp: "https://wa.me/18322532925",
 
