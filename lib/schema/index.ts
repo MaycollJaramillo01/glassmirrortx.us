@@ -4,9 +4,9 @@ import type { FAQ, Service, ServiceArea } from "@/types";
 /**
  * JSON-LD builders.
  *
- * Only confirmed facts are emitted. There is deliberately no geo pin beyond
- * the published Maps profile, no aggregateRating and no review markup.
- * Inventing those would be schema spam and a policy violation.
+ * Only confirmed facts are emitted. Aggregate rating comes from the public
+ * Google Business Profile (see data/business.ts). Individual Review markup is
+ * omitted until more quotes are stored in data/reviews.ts.
  */
 
 const BUSINESS_ID = `${SITE_URL}/#business`;
@@ -39,6 +39,13 @@ export function buildLocalBusinessSchema() {
       business.googleMaps,
       business.whatsapp,
     ].filter(Boolean),
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: business.googleRating,
+      reviewCount: business.googleReviewCount,
+      bestRating: 5,
+      worstRating: 1,
+    },
     openingHours: [...business.openingHours],
     address: {
       "@type": "PostalAddress",

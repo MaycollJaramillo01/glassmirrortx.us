@@ -147,14 +147,16 @@ export interface BeforeAfterItem {
 }
 
 /**
- * A published customer review. The site ships with none: the component reads
- * this array and hides itself when empty rather than showing invented praise.
+ * A published customer review. Quotes must be attributable to a real source
+ * (Google, Facebook, etc.) — never invented praise.
  */
 export interface Testimonial {
   quote: string;
   author: string;
   location: string;
   source: string;
+  /** Star rating given by the reviewer, when published (1–5). */
+  rating?: number;
 }
 
 export interface EstimateSubmission {
