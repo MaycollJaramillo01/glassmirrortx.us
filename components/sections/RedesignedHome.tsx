@@ -20,6 +20,7 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/animations/Reveal";
 import { ServiceAreaMap } from "@/components/maps/ServiceAreaMap";
 import { HeroBackgroundVideo } from "@/components/sections/HeroBackgroundVideo";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 
 const serviceHighlights = [
   {
@@ -516,6 +517,8 @@ export function RedesignedHome() {
           </div>
         </Container>
       </section>
+
+      <TestimonialsSection />
 
       <section id="where-we-work" className="bg-white py-20 sm:py-28 lg:py-32">
         <Container className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">

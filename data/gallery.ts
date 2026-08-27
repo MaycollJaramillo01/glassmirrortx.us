@@ -1,4 +1,4 @@
-import type { BeforeAfterItem, GalleryItem, Testimonial } from "@/types";
+import type { BeforeAfterItem, GalleryItem } from "@/types";
 
 export const galleryCategories = [
   "All",
@@ -105,12 +105,3 @@ export const galleryItems: GalleryItem[] = [
 
 /** Before/after pairs — add real pairs when documented photos are available. */
 export const beforeAfterItems: BeforeAfterItem[] = [];
-
-/**
- * Customer reviews.
- *
- * Deliberately empty. Publishing invented testimonials is fraud, and the
- * company's real reviews live on its Google Business Profile and Facebook.
- * The section renders nothing while this array is empty.
- */
-export const testimonials: Testimonial[] = [];
