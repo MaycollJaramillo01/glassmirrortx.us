@@ -37,8 +37,32 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
+      "I finally found the best window, shower glass, and mirror company in Houston that was willing to fix this broken glass in Round Top. Thank You",
+    author: "ROBERT LEE",
+    location: "Houston, TX",
+    source: "Google",
+    rating: 5,
+  },
+  {
+    quote:
+      "I've been working with Orlyn for several years now and he has always gone above and beyond to meet and exceed our customers expectations. Punctual, professsional service at a great price!",
+    author: "mario striever",
+    location: "Houston, TX",
+    source: "Google",
+    rating: 5,
+  },
+  {
+    quote:
       "Very professional guys! They show up and get the job done in a timely fashion. They did a commercial building for us and came out excellent. Highly recommend",
     author: "Rami Ghuneim",
+    location: "Houston, TX",
+    source: "Google",
+    rating: 5,
+  },
+  {
+    quote:
+      "Muy buen servicio y atento a los detalles, Mr Orlyn Martinez me iso un buen trabajo con mi baño bien preciso, limpio y buena comunicacion.",
+    author: "Mike July",
     location: "Houston, TX",
     source: "Google",
     rating: 5,
@@ -61,8 +85,24 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
+      "Orlyn again did a great job in replacing two double-pane glass panels for my windows. He completed the job quickly with a good price. I'm a happy repeat customer. JimmyS",
+    author: "Jimmy Shaw",
+    location: "Houston, TX",
+    source: "Google",
+    rating: 5,
+  },
+  {
+    quote:
       "Amazing service, worked with my schedule and urgent dead line of less than 24hrs. Very quick and easy process to book.",
     author: "Grabiel Manzano",
+    location: "Houston, TX",
+    source: "Google",
+    rating: 5,
+  },
+  {
+    quote:
+      "Orlyn did a great job fairly priced for making us 4 framed mirrors and then installing them. He is very professional and what we like most of all is he responds to texts very quickly and shows up when he says he will.",
+    author: "Tom Kelly",
     location: "Houston, TX",
     source: "Google",
     rating: 5,
