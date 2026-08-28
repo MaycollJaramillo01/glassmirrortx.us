@@ -135,6 +135,8 @@ export interface NavItem {
 export interface GalleryItem extends Photo {
   category: string;
   caption: string;
+  /** Service slug this job photo best represents. */
+  serviceSlug?: string;
 }
 
 export interface BeforeAfterItem {

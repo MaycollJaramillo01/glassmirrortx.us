@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { SITE_URL, business } from "@/data/business";
+import { photos } from "@/data/photos";
 import type { Service, ServiceArea } from "@/types";
 
-/** Default Open Graph image: stock glass photography for the site brand. */
+/** Default Open Graph image: company job photography. */
 const OG_IMAGE = {
-  url: "/images/stock/hero-glass.webp",
-  width: 1400,
-  height: 933,
-  alt: "Modern home with large glass windows and sliding doors",
+  url: photos.heroGlass.src,
+  width: photos.heroGlass.width,
+  height: photos.heroGlass.height,
+  alt: photos.heroGlass.alt,
 };
 
 interface BuildOptions {
