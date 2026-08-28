@@ -56,8 +56,8 @@ export default function GalleryPage() {
               Every job, filed by service.
             </h2>
             <p className="mt-6 text-[1.02rem] leading-relaxed text-muted">
-              {galleryItems.length} photographs from glass and mirror projects. Filter by the work
-              you are looking for.
+              {galleryItems.length} photographs from Martinez Orlyn Glass & Mirror projects,
+              organized by work type. Filter by showers, mirrors, windows and more.
             </p>
           </div>
           <div className="mt-12">

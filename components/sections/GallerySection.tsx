@@ -10,11 +10,26 @@ import { cn } from "@/lib/utils/cn";
  * Bento of real company job photos — not stock. Full set lives on /gallery.
  */
 const picks = [
-  { photo: galleryItems[0]!, span: "md:col-span-3 md:row-span-2" },
-  { photo: galleryItems[2]!, span: "md:col-span-5" },
-  { photo: galleryItems[5]!, span: "md:col-span-4" },
-  { photo: galleryItems[3]!, span: "md:col-span-4" },
-  { photo: galleryItems[9]!, span: "md:col-span-5" },
+  {
+    photo: galleryItems.find((item) => item.category === "Custom Showers")!,
+    span: "md:col-span-3 md:row-span-2",
+  },
+  {
+    photo: galleryItems.find((item) => item.category === "Mirrors")!,
+    span: "md:col-span-5",
+  },
+  {
+    photo: galleryItems.find((item) => item.category === "Windows & Glass")!,
+    span: "md:col-span-4",
+  },
+  {
+    photo: galleryItems.find((item) => item.category === "Shower Doors")!,
+    span: "md:col-span-4",
+  },
+  {
+    photo: galleryItems.find((item) => item.category === "Glass Services")!,
+    span: "md:col-span-5",
+  },
 ] as const;
 
 export function GallerySection() {

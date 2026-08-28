@@ -47,11 +47,8 @@ export function mediaFor(slug: string): Photo[] {
     }));
 }
 
-/**
- * Fallback hero when a service has no folder photographs yet.
- * Each entry is stock imagery that shows the service subject.
- */
-const stockHero: Record<string, Photo> = {
+/** Company photo heroes when a service has no dedicated gallery folder yet. */
+const companyHero: Record<string, Photo> = {
   "custom-shower-enclosures": photos.showerEnclosure,
   "shower-doors": photos.showerDoor,
   "custom-mirrors": photos.mirrorInstall,
@@ -63,8 +60,11 @@ const stockHero: Record<string, Photo> = {
   reglazing: photos.reglazing,
 };
 
+/**
+ * Hero and inline gallery come from imported company job photos only.
+ */
 function heroFor(slug: string): Photo | null {
-  return mediaFor(slug)[0] ?? stockHero[slug] ?? null;
+  return mediaFor(slug)[0] ?? companyHero[slug] ?? null;
 }
 
 type Draft = Omit<Service, "heroImage" | "gallery">;
@@ -998,7 +998,7 @@ const drafts: Draft[] = [
   },
 ];
 
-/** Hero image and gallery come from imported media, with stockHero fallback. */
+/** Hero image and gallery come from imported company job photos. */
 export const services: Service[] = drafts.map((draft) => ({
   ...draft,
   heroImage: heroFor(draft.slug),

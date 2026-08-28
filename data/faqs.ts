@@ -17,7 +17,7 @@ export const homeFaqs: FAQ[] = [
   {
     question: "What areas do you serve around Houston, TX?",
     answer:
-      "We are based in Houston and serve the surrounding metro, including Katy, Sugar Land, Cypress, Spring, Tomball, Humble, Conroe, Alvin and League City. Coverage follows practical drive time from Houston rather than a hard radius line — if you are nearby and need shower glass, mirrors, windows or glass repair, call (832) 253-2925 to confirm.",
+      "We are based in Houston and serve communities within about 40 miles, including Katy, Sugar Land, Cypress, Spring, Tomball, Humble, Conroe, Alvin and League City. If you are nearby and need shower glass, mirrors, windows or glass repair, call (832) 253-2925 to confirm.",
   },
   {
     question: "Do you work on residential and commercial properties?",

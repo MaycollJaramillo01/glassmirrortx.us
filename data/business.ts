@@ -31,14 +31,14 @@ export const business = {
   tagline: "Experience and Professionalism",
 
   /**
-   * Hours published on the previous site schema (Mon–Sun 09:00–17:00).
+   * Hours confirmed by the client (Mon–Sun 07:00–21:00).
    * Appointments are still scheduled by phone / WhatsApp / email.
    */
   availability: "By appointment",
-  hoursLabel: "Monday – Sunday, 9:00 AM – 5:00 PM",
+  hoursLabel: "Monday – Sunday, 7:00 AM – 9:00 PM",
   /** Shorter label for the crowded header utility bar. */
-  hoursLabelShort: "Mon – Sun, 9 AM – 5 PM",
-  openingHours: ["Mo-Su 09:00-17:00"],
+  hoursLabelShort: "Mon – Sun, 7 AM – 9 PM",
+  openingHours: ["Mo-Su 07:00-21:00"],
 
   /**
    * The site says "years of hands-on experience" without a specific number.
@@ -50,7 +50,7 @@ export const business = {
 
   /** Approximate coverage of published service areas around Houston. */
   radiusMiles: 40,
-  radiusLabel: "Houston and surrounding communities",
+  radiusLabel: "within 40 miles of Houston",
 
   counties: ["Harris County", "Fort Bend County", "Montgomery County", "Brazoria County", "Galveston County"],
 

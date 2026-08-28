@@ -52,6 +52,18 @@ const serviceHighlights = [
   },
 ] as const;
 
+function pickGallery(category: string, index = 0) {
+  return galleryItems.filter((item) => item.category === category)[index] ?? galleryItems[0]!;
+}
+
+/** Home gallery bento — one strong photo per work type. */
+const homeGallery = {
+  shower: pickGallery("Custom Showers", 0),
+  mirror: galleryItems.find((item) => item.src.includes("custom-mirrors-015"))!,
+  window: pickGallery("Windows & Glass", 0),
+  door: pickGallery("Shower Doors", 0),
+} as const;
+
 export const homePageFaqs = [
   {
     question: "How do I get a price?",
@@ -71,7 +83,7 @@ export const homePageFaqs = [
   {
     question: "Do you serve outside Houston?",
     answer:
-      "Yes. Martinez Orlyn Glass & Mirror works across Katy, Sugar Land, Cypress, Spring, Tomball, Humble, Conroe, Alvin, League City and nearby communities.",
+      "Yes. Martinez Orlyn Glass & Mirror works within about 40 miles of Houston — including Katy, Sugar Land, Cypress, Spring, Tomball, Humble, Conroe, Alvin, League City and nearby communities.",
   },
 ] as const;
 
@@ -456,8 +468,8 @@ export function RedesignedHome() {
 
           <Reveal kind="scale" delay={180} className="relative mt-12 aspect-[21/9] min-h-[14rem] overflow-hidden sm:mt-14 lg:mt-16">
             <Image
-              src={photos.mirrorInstall.src}
-              alt={photos.mirrorInstall.alt}
+              src={photos.howWeWork.src}
+              alt={photos.howWeWork.alt}
               fill
               sizes="(max-width: 1023px) 100vw, 1120px"
               className="object-cover"
@@ -484,8 +496,8 @@ export function RedesignedHome() {
 
           <div className="mt-10 grid gap-4 lg:grid-cols-12">
             <WorkPhoto
-              photo={galleryItems[0]!}
-              caption={galleryItems[0]!.caption}
+              photo={homeGallery.shower}
+              caption={homeGallery.shower.caption}
               aspect="aspect-[3/4] sm:aspect-[16/10] lg:aspect-[3/4]"
               sizes="(max-width: 1023px) 100vw, 41vw"
               className="lg:col-span-5 lg:h-full"
@@ -493,22 +505,22 @@ export function RedesignedHome() {
 
             <div className="grid gap-4 lg:col-span-7">
               <WorkPhoto
-                photo={galleryItems[2]!}
-                caption={galleryItems[2]!.caption}
+                photo={homeGallery.mirror}
+                caption={homeGallery.mirror.caption}
                 aspect="aspect-[16/10] lg:aspect-[16/9]"
                 sizes="(max-width: 1023px) 100vw, 57vw"
                 delay={70}
               />
               <div className="grid gap-4 sm:grid-cols-2">
                 <WorkPhoto
-                  photo={galleryItems[5]!}
-                  caption={galleryItems[5]!.caption}
+                  photo={homeGallery.window}
+                  caption={homeGallery.window.caption}
                   sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 28vw"
                   delay={140}
                 />
                 <WorkPhoto
-                  photo={galleryItems[9]!}
-                  caption={galleryItems[9]!.caption}
+                  photo={homeGallery.door}
+                  caption={homeGallery.door.caption}
                   sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 28vw"
                   delay={210}
                 />

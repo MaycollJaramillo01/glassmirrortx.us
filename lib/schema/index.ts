@@ -1,4 +1,5 @@
 import { SITE_URL, business } from "@/data/business";
+import { photos } from "@/data/photos";
 import type { FAQ, Service, ServiceArea } from "@/types";
 
 /**
@@ -21,7 +22,7 @@ export function buildLocalBusinessSchema() {
     legalName: business.legalName,
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
-    image: `${SITE_URL}/images/stock/hero-glass.webp`,
+    image: `${SITE_URL}${photos.heroGlass.src}`,
     telephone: business.phone,
     email: business.email,
     slogan: business.tagline,
