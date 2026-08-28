@@ -49,8 +49,8 @@ export const business = {
   experienceLabel: "Hands-On Experience",
 
   /** Approximate coverage of published service areas around Houston. */
-  radiusMiles: 40,
-  radiusLabel: "within 40 miles of Houston",
+  radiusMiles: 100,
+  radiusLabel: "within 100 miles of Houston",
 
   counties: ["Harris County", "Fort Bend County", "Montgomery County", "Brazoria County", "Galveston County"],
 
