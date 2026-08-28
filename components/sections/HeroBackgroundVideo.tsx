@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
+import { photos } from "@/data/photos";
+
 /** Decorative hero motion that respects the visitor's reduced-motion setting. */
 export function HeroBackgroundVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -36,7 +38,7 @@ export function HeroBackgroundVideo() {
       loop
       playsInline
       preload="metadata"
-      poster="/images/showers/shower-enclosure-1.webp"
+      poster={photos.showerEnclosure.src}
       aria-hidden="true"
       tabIndex={-1}
     >

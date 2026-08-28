@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 
 import { SITE_URL, business } from "@/data/business";
+import { photos } from "@/data/photos";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileStickyCTA } from "@/components/layout/MobileStickyCTA";
@@ -84,10 +85,10 @@ export const metadata: Metadata = {
     url: SITE_URL,
     images: [
       {
-        url: "/images/stock/hero-glass.webp",
-        width: 1400,
-        height: 933,
-        alt: "Modern home with large glass windows and sliding doors",
+        url: photos.heroGlass.src,
+        width: photos.heroGlass.width,
+        height: photos.heroGlass.height,
+        alt: photos.heroGlass.alt,
       },
     ],
   },
@@ -96,7 +97,7 @@ export const metadata: Metadata = {
     title: "Glass & Mirror in Houston, TX | Martinez Orlyn Glass & Mirror",
     description:
       "Custom shower enclosures, mirrors, windows and glass repair. Licensed & insured. Call (832) 253-2925.",
-    images: ["/images/stock/hero-glass.webp"],
+    images: [photos.heroGlass.src],
   },
   verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
     ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }

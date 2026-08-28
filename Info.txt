@@ -14,7 +14,7 @@ Email	martinezorlyn@yahoo.com
 WhatsApp	https://wa.me/18322532925
 Facebook	https://www.facebook.com/MartinezOrlyn
 Google Maps	https://maps.app.goo.gl/DzruyyJ2gzJxSssC6
-Horario (publicado en sitio anterior)	Lun–Dom 9:00 AM – 5:00 PM
+Horario (confirmado por cliente)	Lun–Dom 7:00 AM – 9:00 PM
 Facturas / cotizaciones	WhatsApp + email (confirmado por Orlando Garcia)
 Licencia (logo)	T189489 — Licensed & Insured
 Tagline (logo)	Experience and Professionalism
@@ -29,8 +29,7 @@ Notas:
 - El sitio viejo solo decía “Houston, Texas” (sin calle). La calle sale de listados
   públicos (Wheree / directorios) con el mismo teléfono; Google Maps muestra pin
   de ciudad. Confirmar con Orlando si Suite B4 es la oficial.
-- No usar horarios de agregadores (7 AM–9 PM / domingo 24h); el sitio propio
-  publica Lun–Dom 9–5.
+- Horario confirmado por el cliente: Lun–Dom 7 AM – 9 PM (schema + header + footer).
 
 2. Servicios publicados
 - Custom Shower Enclosures
