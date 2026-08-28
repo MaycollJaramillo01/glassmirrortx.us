@@ -69,7 +69,7 @@ export function EstimateForm() {
         </label>
         <label className="text-[0.82rem] font-semibold text-charcoal">
           Phone
-          <input className={inputClassName} name="phone" required autoComplete="tel" inputMode="tel" placeholder="(832) 555-0142" />
+          <input className={inputClassName} name="phone" required autoComplete="tel" inputMode="tel" placeholder="Your phone number" />
         </label>
         <label className="text-[0.82rem] font-semibold text-charcoal">
           Email <span className="font-normal text-muted">(optional)</span>

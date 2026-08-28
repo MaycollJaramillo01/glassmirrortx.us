@@ -83,7 +83,7 @@ export const homePageFaqs = [
   {
     question: "Do you serve outside Houston?",
     answer:
-      "Yes. Martinez Orlyn Glass & Mirror works within about 40 miles of Houston — including Katy, Sugar Land, Cypress, Spring, Tomball, Humble, Conroe, Alvin, League City and nearby communities.",
+      `Yes. Martinez Orlyn Glass & Mirror works within about ${business.radiusMiles} miles of Houston — including Katy, Sugar Land, Cypress, Spring, Tomball, Humble, Conroe, Alvin, League City and nearby communities.`,
   },
 ] as const;
 

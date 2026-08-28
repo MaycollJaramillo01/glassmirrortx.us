@@ -2,6 +2,8 @@
 
 import { Circle, CircleMarker, MapContainer, TileLayer, Tooltip } from "react-leaflet";
 
+import { business } from "@/data/business";
+
 type City = {
   name: string;
   coordinates: [number, number];
@@ -45,7 +47,7 @@ export function ServiceAreaLeaflet() {
         />
         <Circle
           center={houston}
-          radius={64374}
+          radius={Math.round(business.radiusMiles * 1609.34)}
           pathOptions={{ color: "#14c4c4", fillColor: "#14c4c4", fillOpacity: 0.1, weight: 2 }}
         />
         {cities.map((city) => (
