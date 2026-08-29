@@ -17,6 +17,7 @@ import { additionalCommunities, getServiceArea, primaryAreaSlugs } from "@/data/
 import { getService } from "@/data/services";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { HardLink } from "@/components/ui/HardLink";
 import { Reveal } from "@/components/animations/Reveal";
 import { ServiceAreaMap } from "@/components/maps/ServiceAreaMap";
 import { HeroBackgroundVideo } from "@/components/sections/HeroBackgroundVideo";
@@ -204,7 +205,7 @@ export function RedesignedHome() {
       <section id="about" className="bg-bone py-16 sm:py-20 lg:py-24">
         <Container className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
           <Reveal kind="scale" className="relative min-h-[23rem] overflow-hidden sm:min-h-[31rem] lg:col-span-6">
-            <a href="/about" className="group relative block size-full min-h-[23rem] sm:min-h-[31rem]" aria-label="About Martinez Orlyn Glass & Mirror">
+            <HardLink href="/about" className="group relative block size-full min-h-[23rem] sm:min-h-[31rem]" aria-label="About Martinez Orlyn Glass & Mirror">
               <Image
                 src={photos.aboutShop.src}
                 alt={photos.aboutShop.alt}
@@ -217,7 +218,7 @@ export function RedesignedHome() {
                 <p className="font-display text-[1.8rem] font-extrabold tracking-[-0.04em]">{business.experience}</p>
                 <p className="text-[0.7rem] font-bold tracking-[0.14em] text-bone/70 uppercase">{business.experienceLabel}</p>
               </div>
-            </a>
+            </HardLink>
           </Reveal>
 
           <div className="lg:col-span-5 lg:col-start-8">

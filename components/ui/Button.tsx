@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
+import { HardLink } from "@/components/ui/HardLink";
 import { cn } from "@/lib/utils/cn";
 
 type Variant = "primary" | "secondary" | "outline" | "onDark" | "text";
@@ -86,11 +87,10 @@ export function Button(props: Props) {
       );
     }
 
-    // Plain anchors load reliably in mobile in-app browsers (WhatsApp, Messenger).
     return (
-      <a href={href} className={classes} {...anchorRest}>
+      <HardLink href={href} className={classes} {...anchorRest}>
         {content}
-      </a>
+      </HardLink>
     );
   }
 
