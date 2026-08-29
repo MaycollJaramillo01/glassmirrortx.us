@@ -153,11 +153,11 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     src: "/images/gallery/custom-showers-056.webp",
-    alt: "Martinez Orlyn Glass & Mirror \u2014 Frameless corner shower with gold hardware",
+    alt: "Martinez Orlyn Glass & Mirror \u2014 Frameless 90 degrees shower with gold hardware",
     width: 1200,
     height: 1600,
     category: "Custom Showers",
-    caption: "Frameless corner shower with gold hardware",
+    caption: "Frameless 90 degrees shower with gold hardware",
     serviceSlug: "custom-shower-enclosures",
   },
   {
@@ -212,15 +212,6 @@ export const galleryItems: GalleryItem[] = [
     height: 1600,
     category: "Shower Doors",
     caption: "Matte black barn-style sliding shower door system",
-    serviceSlug: "shower-doors",
-  },
-  {
-    src: "/images/gallery/shower-doors-083.webp",
-    alt: "Martinez Orlyn Glass & Mirror \u2014 Sliding glass shower doors with matte black hardware",
-    width: 1200,
-    height: 1600,
-    category: "Shower Doors",
-    caption: "Sliding glass shower doors with matte black hardware",
     serviceSlug: "shower-doors",
   },
   {

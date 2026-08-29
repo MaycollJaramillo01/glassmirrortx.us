@@ -157,13 +157,6 @@ export const serviceMedia: ServiceMedia[] = [
     height: 1600,
   },
   {
-    src: "/images/gallery/shower-doors-083.webp",
-    group: "bathroom-glass",
-    service: "shower-doors",
-    width: 1200,
-    height: 1600,
-  },
-  {
     src: "/images/gallery/custom-mirrors-002.webp",
     group: "mirrors-glass",
     service: "custom-mirrors",
