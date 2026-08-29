@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LayoutGrid, Phone, PencilRuler } from "lucide-react";
 import { business, cta } from "@/data/business";
+import { HardLink } from "@/components/ui/HardLink";
 
 /**
  * Mobile conversion bar.
@@ -34,7 +34,7 @@ export function MobileStickyCTA() {
         </span>
       </a>
 
-      <Link
+      <HardLink
         href="/contact"
         data-cta="estimate"
         data-location="sticky_bar"
@@ -44,9 +44,9 @@ export function MobileStickyCTA() {
         <span className="font-display text-[0.66rem] font-bold tracking-[0.14em] uppercase">
           {cta.estimateShort}
         </span>
-      </Link>
+      </HardLink>
 
-      <Link
+      <HardLink
         href="/services"
         className="flex min-h-[58px] flex-col items-center justify-center gap-1 border-l border-charcoal-line text-bone transition-colors active:bg-charcoal-soft"
       >
@@ -54,7 +54,7 @@ export function MobileStickyCTA() {
         <span className="font-display text-[0.66rem] font-bold tracking-[0.14em] uppercase">
           Services
         </span>
-      </Link>
+      </HardLink>
     </nav>
   );
 }
