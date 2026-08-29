@@ -1,6 +1,6 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
+import { HardLink } from "@/components/ui/HardLink";
 import { cn } from "@/lib/utils/cn";
 
 type Variant = "primary" | "secondary" | "outline" | "onDark" | "text";
@@ -88,9 +88,9 @@ export function Button(props: Props) {
     }
 
     return (
-      <Link href={href} className={classes} {...anchorRest}>
+      <HardLink href={href} className={classes} {...anchorRest}>
         {content}
-      </Link>
+      </HardLink>
     );
   }
 

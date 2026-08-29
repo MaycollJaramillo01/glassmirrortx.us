@@ -17,6 +17,7 @@ import { additionalCommunities, getServiceArea, primaryAreaSlugs } from "@/data/
 import { getService } from "@/data/services";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { HardLink } from "@/components/ui/HardLink";
 import { Reveal } from "@/components/animations/Reveal";
 import { ServiceAreaMap } from "@/components/maps/ServiceAreaMap";
 import { HeroBackgroundVideo } from "@/components/sections/HeroBackgroundVideo";
@@ -112,16 +113,16 @@ export function RedesignedHome() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center opacity-70"
+          className="pointer-events-none object-cover object-center opacity-70"
           aria-hidden="true"
         />
         <HeroBackgroundVideo />
-        <div aria-hidden="true" className="absolute inset-0 bg-charcoal/40" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-charcoal/40" />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,12,17,0.98)_0%,rgba(5,12,17,0.91)_42%,rgba(5,12,17,0.35)_76%,rgba(5,12,17,0.58)_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(5,12,17,0.98)_0%,rgba(5,12,17,0.91)_42%,rgba(5,12,17,0.35)_76%,rgba(5,12,17,0.58)_100%)]"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(20,196,196,0.18),transparent_28%)]" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(20,196,196,0.18),transparent_28%)]" />
         <div aria-hidden="true" className="hero-glass-grid pointer-events-none absolute inset-y-0 right-0 hidden w-[44%] lg:block" />
         <div aria-hidden="true" className="grain pointer-events-none absolute inset-0" />
 
@@ -204,18 +205,20 @@ export function RedesignedHome() {
       <section id="about" className="bg-bone py-16 sm:py-20 lg:py-24">
         <Container className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
           <Reveal kind="scale" className="relative min-h-[23rem] overflow-hidden sm:min-h-[31rem] lg:col-span-6">
-            <Image
-              src={photos.aboutShop.src}
-              alt={photos.aboutShop.alt}
-              fill
-              priority
-              sizes="(max-width: 1023px) 100vw, 50vw"
-              className="object-cover"
-            />
-            <div className="absolute bottom-0 left-0 bg-forest px-5 py-4 text-bone sm:px-7 sm:py-5">
-              <p className="font-display text-[1.8rem] font-extrabold tracking-[-0.04em]">{business.experience}</p>
-              <p className="text-[0.7rem] font-bold tracking-[0.14em] text-bone/70 uppercase">{business.experienceLabel}</p>
-            </div>
+            <HardLink href="/about" className="group relative block size-full min-h-[23rem] sm:min-h-[31rem]" aria-label="About Martinez Orlyn Glass & Mirror">
+              <Image
+                src={photos.aboutShop.src}
+                alt={photos.aboutShop.alt}
+                fill
+                priority
+                sizes="(max-width: 1023px) 100vw, 50vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+              <div className="absolute bottom-0 left-0 bg-forest px-5 py-4 text-bone sm:px-7 sm:py-5">
+                <p className="font-display text-[1.8rem] font-extrabold tracking-[-0.04em]">{business.experience}</p>
+                <p className="text-[0.7rem] font-bold tracking-[0.14em] text-bone/70 uppercase">{business.experienceLabel}</p>
+              </div>
+            </HardLink>
           </Reveal>
 
           <div className="lg:col-span-5 lg:col-start-8">
