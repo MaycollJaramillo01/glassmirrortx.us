@@ -45,7 +45,7 @@ ITEMS = [
     {"file": "raw-049.webp", "category": "custom-showers", "quality": 5, "description": "Frameless shower with gold hardware and marble bench"},
     {"file": "raw-051.webp", "category": "custom-showers", "quality": 5, "description": "Frameless glass shower enclosure over bathtub"},
     {"file": "raw-055.webp", "category": "custom-showers", "quality": 4, "description": "Frameless shower with brushed nickel hardware"},
-    {"file": "raw-056.webp", "category": "custom-showers", "quality": 4, "description": "Frameless corner shower with gold hardware"},
+    {"file": "raw-056.webp", "category": "custom-showers", "quality": 4, "description": "Frameless 90 degrees shower with gold hardware"},
     {"file": "raw-057.webp", "category": "custom-showers", "quality": 5, "description": "Frameless shower with herringbone tile walls"},
     {"file": "raw-058.webp", "category": "shower-doors", "quality": 5, "description": "Black-framed sliding tub shower doors with gold fixtures"},
     {"file": "raw-061.webp", "category": "custom-showers", "quality": 4, "description": "Frameless shower with matte black hardware and pony wall"},
@@ -64,7 +64,7 @@ ITEMS = [
     {"file": "raw-079.webp", "category": "double-pane-windows", "quality": 4, "description": "White vinyl double-pane window in brick wall"},
     {"file": "raw-080.webp", "category": "windows-and-doors", "quality": 4, "description": "Single white-framed window with louvered shutters"},
     {"file": "raw-082.webp", "category": "shower-doors", "quality": 5, "description": "Matte black barn-style sliding shower door system"},
-    {"file": "raw-083.webp", "category": "shower-doors", "quality": 5, "description": "Sliding glass shower doors with matte black hardware"},
+    # raw-083 excluded — same install as 082, different angle
     {"file": "raw-084.webp", "category": "glass-installation-repair", "quality": 5, "description": "Commercial storefront glass for law firm building"},
 ]
 
