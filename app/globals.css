@@ -412,6 +412,7 @@
 
   .hero-video {
     z-index: 0;
+    pointer-events: none;
     filter: saturate(0.72) contrast(1.06) brightness(0.84);
     transform: scale(1.025);
   }

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
@@ -87,10 +86,11 @@ export function Button(props: Props) {
       );
     }
 
+    // Plain anchors load reliably in mobile in-app browsers (WhatsApp, Messenger).
     return (
-      <Link href={href} className={classes} {...anchorRest}>
+      <a href={href} className={classes} {...anchorRest}>
         {content}
-      </Link>
+      </a>
     );
   }
 
