@@ -49,7 +49,7 @@ ITEMS = [
     {"file": "raw-057.webp", "category": "custom-showers", "quality": 5, "description": "Frameless shower with herringbone tile walls"},
     {"file": "raw-058.webp", "category": "shower-doors", "quality": 5, "description": "Black-framed sliding tub shower doors with gold fixtures"},
     {"file": "raw-061.webp", "category": "custom-showers", "quality": 4, "description": "Frameless shower with matte black hardware and pony wall"},
-    {"file": "raw-062.webp", "category": "custom-showers", "quality": 5, "description": "Frameless shower with brass hardware and window"},
+    # raw-062 excluded — duplicate angle of raw-048
     {"file": "raw-064.webp", "category": "shower-doors", "quality": 5, "description": "Frameless shower door with marble tile interior"},
     {"file": "raw-065.webp", "category": "glass-installation-repair", "quality": 4, "description": "Closet cabinet doors with clear glass inserts"},
     {"file": "raw-066.webp", "category": "glass-installation-repair", "quality": 4, "description": "Built-in cabinet with tall clear glass doors"},
@@ -66,6 +66,16 @@ ITEMS = [
     {"file": "raw-082.webp", "category": "shower-doors", "quality": 5, "description": "Matte black barn-style sliding shower door system"},
     # raw-083 excluded — same install as 082, different angle
     {"file": "raw-084.webp", "category": "glass-installation-repair", "quality": 5, "description": "Commercial storefront glass for law firm building"},
+    # Client-submitted gallery photos (Aug 2026)
+    {"file": "raw-090.webp", "category": "custom-showers", "quality": 5, "description": "Frameless shower with gold hardware and marble slab walls"},
+    {"file": "raw-091.webp", "category": "custom-showers", "quality": 5, "description": "Frameless shower with brass hardware and teal subway tile niche"},
+    {"file": "raw-092.webp", "category": "custom-showers", "quality": 5, "description": "Frameless shower with gold hardware on pony wall"},
+    {"file": "raw-093.webp", "category": "custom-showers", "quality": 5, "description": "Frameless shower with brushed nickel and marble brick tile"},
+    {"file": "raw-094.webp", "category": "custom-showers", "quality": 5, "description": "Frameless glass enclosure over bathtub with chrome hardware"},
+    {"file": "raw-095.webp", "category": "custom-showers", "quality": 5, "description": "Neo-angle frameless shower with black hardware and dark tile"},
+    {"file": "raw-085.webp", "category": "shower-doors", "quality": 5, "description": "Matte black barn door shower with dark marble walls"},
+    {"file": "raw-086.webp", "category": "shower-doors", "quality": 5, "description": "Matte black sliding shower door with light gray tile"},
+    # raw-087 excluded — same install as 086, different angle
 ]
 
 CAT_LABEL = {

@@ -37,13 +37,13 @@ export const photos = {
   },
   mirrorInstall: {
     src: "/images/gallery/custom-mirrors-015.webp",
-    alt: "Martinez Orlyn Glass & Mirror — Multi-panel angled vanity mirrors over granite counter",
+    alt: "Martinez Orlyn Glass & Mirror \u2014 Multi-panel angled vanity mirrors over granite counter",
     width: 1500,
     height: 2000,
   },
   mirrorInstallAlt: {
     src: "/images/gallery/custom-mirrors-002.webp",
-    alt: "Martinez Orlyn Glass & Mirror — Two dark-framed vanity mirrors flanking tiled wall",
+    alt: "Martinez Orlyn Glass & Mirror \u2014 Two dark-framed vanity mirrors flanking tiled wall",
     width: 960,
     height: 540,
   },
@@ -55,7 +55,7 @@ export const photos = {
   },
   howWeWork: {
     src: "/images/gallery/custom-mirrors-010.webp",
-    alt: "Martinez Orlyn Glass & Mirror — Large frameless vanity mirror above blue cabinets",
+    alt: "Martinez Orlyn Glass & Mirror \u2014 Large frameless vanity mirror above blue cabinets",
     width: 1316,
     height: 640,
   },
