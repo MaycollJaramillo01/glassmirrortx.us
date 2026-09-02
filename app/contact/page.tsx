@@ -54,10 +54,13 @@ export default function ContactPage() {
         <Container className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="eyebrow-line text-forest">{cta.estimate}</p>
-            <h2 className="home-h2 mt-6 text-charcoal">A few details is enough to start.</h2>
+            <h2 className="home-h2 mt-6 text-charcoal">Send a message — photos welcome.</h2>
             <div className="mt-8 space-y-5 border-t border-charcoal/15 pt-6 text-[0.92rem] leading-relaxed text-muted">
-              <p>Tell us where the property is, what glass or mirror work you need and what surrounds the opening.</p>
-              <p>Prefer to talk through it? Call {business.phone} and we will help you schedule.</p>
+              <p>
+                Tell us where the property is, what glass or mirror work you need, and attach photos of the
+                opening if you have them.
+              </p>
+              <p>Prefer to talk through it? Call {business.phone} or use WhatsApp.</p>
               <div className="flex items-start gap-3 text-charcoal">
                 <MapPin className="mt-1 size-4 shrink-0 text-gold" aria-hidden="true" strokeWidth={2.4} />
                 <a

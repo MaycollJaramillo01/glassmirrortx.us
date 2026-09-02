@@ -41,12 +41,11 @@ export const business = {
   openingHours: ["Mo-Su 07:00-21:00"],
 
   /**
-   * The site says "years of hands-on experience" without a specific number.
-   * Do not invent a year count.
+   * Confirmed by the client to match the previous website (Sept 2026).
    */
-  experience: "Years of Experience",
-  experienceValue: "Years",
-  experienceLabel: "Hands-On Experience",
+  experience: "22 years",
+  experienceValue: "22",
+  experienceLabel: "Years of Experience",
 
   /** Approximate coverage of published service areas around Houston. */
   radiusMiles: 100,

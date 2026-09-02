@@ -32,7 +32,7 @@ export const serviceAreas: ServiceArea[] = [
       paragraphs: [
         "Houston’s glass work follows how the city grows. Inside the Loop and in established neighborhoods, bath remodels and custom vanity mirrors are constant — older homes getting new tile and glass that has to fit openings that were never standard. Along the west and north corridors, newer construction and commercial fit-outs call for shower enclosures, storefront glass and mirrored walls sized to the plan.",
         "Heat and storm seasons matter here. Insulated window units fog, door glass takes impact, and west-facing rooms need solar screens as often as they need new panes. Being based in Houston means appointments are local work, not a long drive from another metro.",
-        "We are a family-owned company, licensed and insured (T189489), with years of hands-on experience. Call (832) 253-2925 to get an appointment for glass or mirror work anywhere in the city.",
+        "We are a family-owned company, licensed and insured (T189489), with 22 years of hands-on experience. Call (832) 253-2925 to get an appointment for glass or mirror work anywhere in the city.",
       ],
     },
     featuredServices: [
@@ -69,7 +69,7 @@ export const serviceAreas: ServiceArea[] = [
       {
         question: "Are you licensed and insured?",
         answer:
-          "Yes. We are licensed and insured (license T189489), family-owned, with years of hands-on glass and mirror experience.",
+          "Yes. We are licensed and insured (license T189489), family-owned, with 22 years of hands-on glass and mirror experience.",
       },
     ],
   },

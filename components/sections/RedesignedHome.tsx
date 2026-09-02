@@ -215,7 +215,7 @@ export function RedesignedHome() {
                 className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
               />
               <div className="absolute bottom-0 left-0 bg-forest px-5 py-4 text-bone sm:px-7 sm:py-5">
-                <p className="font-display text-[1.8rem] font-extrabold tracking-[-0.04em]">{business.experience}</p>
+                <p className="font-display text-[1.8rem] font-extrabold tracking-[-0.04em]">{business.experienceValue}</p>
                 <p className="text-[0.7rem] font-bold tracking-[0.14em] text-bone/70 uppercase">{business.experienceLabel}</p>
               </div>
             </HardLink>
@@ -248,7 +248,7 @@ export function RedesignedHome() {
 
       <section aria-label={`${business.name} at a glance`} className="border-b border-charcoal-line bg-charcoal text-bone">
         <Container width="wide" className="grid gap-0 md:grid-cols-4">
-          <Proof value={business.experience} label="Hands-on experience" />
+          <Proof value={business.experienceValue} label={business.experienceLabel} />
           <Proof value="Licensed" label={`License ${business.license}`} />
           <Proof value={`${business.radiusMiles} mi`} label="Houston coverage" />
           <div className="flex items-center border-forest-soft px-0 py-6 md:justify-end md:border-l md:px-8">
