@@ -805,7 +805,7 @@ const drafts: Draft[] = [
     eyebrow: "Glass Services",
     cardSummary: "Install new glass and repair damaged glass across homes and businesses.",
     intro:
-      "Glass installation and repair covers the jobs that do not fit neatly into one product line — new panels in an existing opening, damaged lite replacement, hardware-related glass fixes, and commercial glass that has to go back in on a schedule. Martinez Orlyn Glass & Mirror handles residential and commercial work across Houston with years of hands-on experience.",
+      "Glass installation and repair covers the jobs that do not fit neatly into one product line — new panels in an existing opening, damaged lite replacement, hardware-related glass fixes, and commercial glass that has to go back in on a schedule. Martinez Orlyn Glass & Mirror handles residential and commercial work across Houston with 22 years of hands-on experience.",
     aeo: {
       question: "Who installs and repairs glass in Houston, TX?",
       answer:
