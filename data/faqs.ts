@@ -13,7 +13,7 @@ export const homeFaqs: FAQ[] = [
   {
     question: "How do I get an appointment for glass or mirror work in Houston?",
     answer:
-      "Call (832) 253-2925, message us on WhatsApp, or request an appointment through the site. Martinez Orlyn Glass & Mirror schedules residential and commercial glass and mirror work across Houston and nearby communities. We will discuss the project, confirm site details, and set a time that works for the property.",
+      "Call (832) 253-2925, message us on WhatsApp, or send a message with photos through the site. Martinez Orlyn Glass & Mirror schedules residential and commercial glass and mirror work across Houston and nearby communities. We will discuss the project, confirm site details, and set a time that works for the property.",
   },
   {
     question: "What areas do you serve around Houston, TX?",
@@ -43,7 +43,7 @@ export const homeFaqs: FAQ[] = [
   {
     question: "Are you licensed and insured?",
     answer:
-      "Yes. Martinez Orlyn Glass & Mirror is licensed and insured (license T189489). We are a family-owned Houston glass and mirror company with years of hands-on experience on residential and commercial projects.",
+      "Yes. Martinez Orlyn Glass & Mirror is licensed and insured (license T189489). We are a family-owned Houston glass and mirror company with 22 years of hands-on experience on residential and commercial projects.",
   },
   {
     question: "How should I prepare for a glass or mirror appointment?",
