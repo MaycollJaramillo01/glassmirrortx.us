@@ -30,10 +30,10 @@ export const photos = {
     height: 1600,
   },
   showerEnclosureAlt: {
-    src: "/images/gallery/shower-doors-082.webp",
-    alt: "Martinez Orlyn Glass & Mirror \u2014 Matte black barn-style sliding shower door system",
-    width: 1200,
-    height: 1600,
+    src: "/images/gallery/custom-showers-090.webp",
+    alt: "Martinez Orlyn Glass & Mirror — Frameless shower with gold hardware and marble slab walls",
+    width: 576,
+    height: 1024,
   },
   mirrorInstall: {
     src: "/images/gallery/custom-mirrors-015.webp",
@@ -48,10 +48,10 @@ export const photos = {
     height: 540,
   },
   mirrorWall: {
-    src: "/images/gallery/custom-mirrors-015.webp",
-    alt: "Martinez Orlyn Glass & Mirror \u2014 Multi-panel angled vanity mirrors over granite counter",
-    width: 1500,
-    height: 2000,
+    src: "/images/gallery/custom-mirrors-003.webp",
+    alt: "Martinez Orlyn Glass & Mirror — Large frameless vanity mirror above double sink",
+    width: 640,
+    height: 1317,
   },
   howWeWork: {
     src: "/images/gallery/custom-mirrors-010.webp",
@@ -78,10 +78,10 @@ export const photos = {
     height: 960,
   },
   glassWork: {
-    src: "/images/gallery/glass-installation-repair-084.webp",
-    alt: "Martinez Orlyn Glass & Mirror \u2014 Commercial storefront glass for law firm building",
-    width: 2560,
-    height: 1244,
+    src: "/images/gallery/glass-installation-repair-022.webp",
+    alt: "Martinez Orlyn Glass & Mirror — Commercial transaction window with pass-through slots",
+    width: 1500,
+    height: 2000,
   },
   glassWorkAlt: {
     src: "/images/gallery/glass-installation-repair-014.webp",
