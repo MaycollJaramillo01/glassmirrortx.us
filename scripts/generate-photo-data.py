@@ -55,7 +55,7 @@ ITEMS = [
     {"file": "raw-066.webp", "category": "glass-installation-repair", "quality": 4, "description": "Built-in cabinet with tall clear glass doors"},
     {"file": "raw-068.webp", "category": "custom-showers", "quality": 5, "description": "Frameless shower with matte black hardware"},
     {"file": "raw-070.webp", "category": "windows-and-doors", "quality": 5, "description": "Black-framed sliding patio door reflecting pool"},
-    {"file": "raw-071.webp", "category": "windows-and-doors", "quality": 5, "description": "Large black sliding patio doors on covered porch"},
+    # raw-071 excluded — same install as 070, different angle
     {"file": "raw-073.webp", "category": "custom-showers", "quality": 5, "description": "Frameless shower with glass cut around marble bench"},
     {"file": "raw-075.webp", "category": "custom-showers", "quality": 4, "description": "Frameless bathtub glass enclosure with marble tile"},
     {"file": "raw-076.webp", "category": "solar-screens", "quality": 4, "description": "Double window with solar screens and shutters"},

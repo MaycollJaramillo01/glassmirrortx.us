@@ -386,15 +386,6 @@ export const galleryItems: GalleryItem[] = [
     serviceSlug: "windows-and-doors",
   },
   {
-    src: "/images/gallery/windows-and-doors-071.webp",
-    alt: "Martinez Orlyn Glass & Mirror \u2014 Large black sliding patio doors on covered porch",
-    width: 1500,
-    height: 2000,
-    category: "Windows & Glass",
-    caption: "Large black sliding patio doors on covered porch",
-    serviceSlug: "windows-and-doors",
-  },
-  {
     src: "/images/gallery/windows-and-doors-021.webp",
     alt: "Martinez Orlyn Glass & Mirror \u2014 Black-framed bifold glass garage doors on barn",
     width: 1200,

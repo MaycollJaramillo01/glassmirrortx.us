@@ -290,13 +290,6 @@ export const serviceMedia: ServiceMedia[] = [
     height: 2000,
   },
   {
-    src: "/images/gallery/windows-and-doors-071.webp",
-    group: "windows-doors",
-    service: "windows-and-doors",
-    width: 1500,
-    height: 2000,
-  },
-  {
     src: "/images/gallery/windows-and-doors-021.webp",
     group: "windows-doors",
     service: "windows-and-doors",
