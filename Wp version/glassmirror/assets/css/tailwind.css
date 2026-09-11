@@ -1,0 +1,665 @@
+/*
+ * Tailwind source for the theme. Compiled to theme.css with `npm run build`.
+ * Ported from app/globals.css in the Next.js site; templates keep the same
+ * utility classes, so the compiled output matches the live design.
+ */
+@import "tailwindcss" source(none);
+@source "../../**/*.php";
+@source "../js/theme.js";
+
+/* Self-hosted latin subsets, same files the Next.js site ships. */
+@font-face {
+  font-family: "Archivo";
+  src: url("../fonts/archivo-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("../fonts/archivo-800.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plex";
+  src: url("../fonts/plex-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plex";
+  src: url("../fonts/plex-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-archivo: "Archivo";
+  --font-plex: "Plex";
+}
+
+/* ==========================================================================
+   Martinez Orlyn Glass & Mirror — design tokens
+   Palette from the published logo: forest green name + teal/cyan glass accent
+   on a cool charcoal base. Token names (forest / gold) stay stable so existing
+   Tailwind classes keep working while the hex values match the brand.
+   ========================================================================== */
+
+@theme {
+  /* Logo green — "MARTINEZ ORLYN" */
+  --color-forest: #0a6b2e;
+  --color-forest-deep: #064a1f;
+  --color-forest-soft: #1a8a42;
+
+  /* Cool charcoal — glass / mirror depth */
+  --color-charcoal: #0a1218;
+  --color-charcoal-soft: #121c24;
+  --color-charcoal-line: #243640;
+
+  /* Logo teal/cyan accent — CTAs, rules, focus (kept as --color-gold aliases) */
+  --color-gold: #14c4c4;
+  --color-gold-bright: #3dd9d9;
+  --color-gold-deep: #0e9a9a;
+
+  --color-bone: #f4f8f9;
+  --color-sand: #e4eef0;
+  --color-muted: #5a6b72;
+  --color-muted-light: #9aadb4;
+
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
+
+  --container-site: 80rem; /* 1280px */
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-firm: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bone);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible, high-contrast focus for keyboard users on every surface. */
+  :focus-visible {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-charcoal);
+  }
+
+  /* Anchor targets clear the fixed header. It is 72px on phones and 118px on
+     desktop, where the utility bar sits above the nav. */
+  :target {
+    scroll-margin-top: 6rem;
+  }
+
+  @media (min-width: 1024px) {
+    :target {
+      scroll-margin-top: 8.5rem;
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   WordPress
+   -------------------------------------------------------------------------- */
+
+/* Keep the fixed header below the admin bar for logged-in users. */
+.admin-bar #site-header {
+  top: var(--wp-admin--admin-bar--height, 0px);
+}
+
+.screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Editor content on regular pages and posts. Preflight strips every default,
+   so this restores a readable rhythm for whatever the block editor outputs. */
+.entry-content {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--color-muted);
+}
+.entry-content > * + * {
+  margin-top: 1.25em;
+}
+.entry-content :where(h2, h3, h4) {
+  margin-top: 2em;
+  color: var(--color-charcoal);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.entry-content h2 {
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+}
+.entry-content h3 {
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+}
+.entry-content a {
+  color: var(--color-forest);
+  text-decoration: underline;
+  text-decoration-color: var(--color-gold);
+  text-underline-offset: 4px;
+}
+.entry-content ul {
+  list-style: disc;
+  padding-left: 1.4em;
+}
+.entry-content ol {
+  list-style: decimal;
+  padding-left: 1.4em;
+}
+.entry-content blockquote {
+  border-left: 2px solid var(--color-gold);
+  padding-left: 1.2em;
+  color: var(--color-charcoal);
+}
+.entry-content img {
+  height: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Interactive service map
+   Leaflet panes default to z-index 200–700. Keep them inside this stacking
+   context so the map never covers the fixed site header (z-50 / z-[100]).
+   -------------------------------------------------------------------------- */
+
+.glass-service-map {
+  isolation: isolate;
+  contain: layout paint;
+}
+
+.glass-service-map .leaflet-container {
+  z-index: 0;
+}
+
+.glass-service-map .leaflet-pane,
+.glass-service-map .leaflet-top,
+.glass-service-map .leaflet-bottom,
+.glass-service-map .leaflet-control {
+  z-index: auto !important;
+}
+
+.glass-service-map .leaflet-map-pane {
+  z-index: 1 !important;
+}
+
+.glass-service-map .leaflet-tile-pane {
+  z-index: 1 !important;
+}
+
+.glass-service-map .leaflet-overlay-pane {
+  z-index: 2 !important;
+}
+
+.glass-service-map .leaflet-marker-pane,
+.glass-service-map .leaflet-tooltip-pane,
+.glass-service-map .leaflet-shadow-pane {
+  z-index: 3 !important;
+}
+
+.glass-service-map .leaflet-control-attribution {
+  background: color-mix(in srgb, var(--color-bone) 92%, transparent);
+  color: var(--color-muted);
+  font-size: 0.65rem;
+}
+
+.glass-service-map .leaflet-control-attribution a {
+  color: var(--color-forest);
+}
+
+.glass-service-map .leaflet-tooltip {
+  border: 1px solid color-mix(in srgb, var(--color-bone) 75%, transparent);
+  border-radius: 0;
+  background: var(--color-charcoal);
+  box-shadow: 0 2px 10px rgb(10 18 24 / 22%);
+  color: var(--color-bone);
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  padding: 0.35rem 0.45rem;
+  text-transform: uppercase;
+}
+
+.glass-service-map .leaflet-tooltip-top::before {
+  border-top-color: var(--color-charcoal);
+}
+
+/* --------------------------------------------------------------------------
+   Typographic scale
+   -------------------------------------------------------------------------- */
+
+@layer components {
+  .t-display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.75rem, 6vw, 5.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+  }
+
+  .t-h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.375rem, 5vw, 4.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.028em;
+  }
+
+  .t-h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.9rem, 3.6vw, 3.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.024em;
+  }
+
+  .t-h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.375rem, 2vw, 1.875rem);
+    line-height: 1.15;
+    letter-spacing: -0.018em;
+  }
+
+  .t-h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.125rem, 1.4vw, 1.3rem);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .t-lead {
+    font-size: clamp(1.0625rem, 1.3vw, 1.1875rem);
+    line-height: 1.7;
+  }
+
+  /* Small uppercase label used above headings. Used deliberately, not on
+     every section. */
+  .t-eyebrow {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* Oversized section numeral, e.g. 01 / 02. */
+  .t-numeral {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 0.8;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .t-stat {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.75rem, 5.5vw, 4.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reveal system — IntersectionObserver adds .is-in, CSS does the rest.
+   Elements are visible by default and only hidden once JS confirms it will
+   reveal them (html.js-reveal), so content is never trapped behind an
+   animation if JS fails.
+   -------------------------------------------------------------------------- */
+
+@layer components {
+  .js-reveal [data-reveal] {
+    opacity: 0;
+    will-change: opacity, transform;
+    transition:
+      opacity 700ms var(--ease-out-soft),
+      transform 700ms var(--ease-out-soft),
+      clip-path 900ms var(--ease-out-firm);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .js-reveal [data-reveal="up"] {
+    transform: translateY(28px);
+  }
+  .js-reveal [data-reveal="left"] {
+    transform: translateX(-32px);
+  }
+  .js-reveal [data-reveal="right"] {
+    transform: translateX(32px);
+  }
+  .js-reveal [data-reveal="scale"] {
+    transform: scale(0.96);
+  }
+  .js-reveal [data-reveal="mask"] {
+    opacity: 1;
+    clip-path: inset(100% 0 0 0);
+  }
+
+  .js-reveal [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 0 0);
+  }
+
+  /* Hero entrance: one keyframe, staggered by inline --d. */
+  .hero-in {
+    opacity: 0;
+    animation: hero-rise 800ms var(--ease-out-soft) forwards;
+    animation-delay: var(--d, 0ms);
+  }
+
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .hero-media {
+    animation: hero-scale 1200ms var(--ease-out-firm) forwards;
+  }
+
+  @keyframes hero-scale {
+    from {
+      transform: scale(1.04);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reusable surface details
+   -------------------------------------------------------------------------- */
+
+@layer components {
+  /* Hairline rule that draws itself in when revealed. */
+  .rule-draw {
+    height: 1px;
+    background: currentColor;
+    transform-origin: left;
+  }
+
+  .js-reveal [data-reveal="rule"] {
+    opacity: 1;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .js-reveal [data-reveal="rule"].is-in {
+    transform: scaleX(1);
+  }
+
+  /*
+    Glass-facet motif — diamond lattice that echoes the logo’s pane mark.
+    Replaces the old concentric “tree ring” texture from the prior template.
+  */
+  .glass-facet {
+    background-image:
+      linear-gradient(
+        135deg,
+        transparent 47.5%,
+        currentColor 47.5%,
+        currentColor 48.5%,
+        transparent 48.5%
+      ),
+      linear-gradient(
+        45deg,
+        transparent 47.5%,
+        currentColor 47.5%,
+        currentColor 48.5%,
+        transparent 48.5%
+      );
+    background-size: 52px 52px;
+    background-position:
+      0 0,
+      26px 0;
+  }
+
+  /* Underline that grows on hover for text links. */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: background-size 260ms var(--ease-out-soft);
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* Arrow nudge shared by cards and buttons. */
+  .arrow-shift {
+    transition: transform 240ms var(--ease-out-soft);
+  }
+  .group:hover .arrow-shift {
+    transform: translateX(5px);
+  }
+
+  .img-zoom {
+    transition: transform 700ms var(--ease-out-soft);
+  }
+  .group:hover .img-zoom {
+    transform: scale(1.05);
+  }
+
+  /* Home redesign: high-contrast editorial type and utility links. */
+  .hero-hook {
+    max-width: 14ch;
+    font-family: var(--font-display);
+    font-size: clamp(2.7rem, 4.8vw, 4.8rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
+  }
+
+  .hero-video {
+    z-index: 0;
+    pointer-events: none;
+    filter: saturate(0.72) contrast(1.06) brightness(0.84);
+    transform: scale(1.025);
+  }
+
+  .hero-glass-grid {
+    opacity: 0.18;
+    background-image:
+      linear-gradient(90deg, transparent 0 24%, rgb(244 248 249 / 22%) 24% 24.15%, transparent 24.15% 72%, rgb(244 248 249 / 16%) 72% 72.15%, transparent 72.15%),
+      linear-gradient(180deg, transparent 0 32%, rgb(244 248 249 / 16%) 32% 32.15%, transparent 32.15% 68%, rgb(244 248 249 / 12%) 68% 68.15%, transparent 68.15%);
+  }
+
+  .hero-glass-panel {
+    border: 1px solid rgb(244 248 249 / 20%);
+    background: linear-gradient(145deg, rgb(10 18 24 / 58%), rgb(10 18 24 / 34%));
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 10%),
+      0 24px 70px rgb(3 9 13 / 34%);
+    backdrop-filter: blur(14px) saturate(1.1);
+  }
+
+  .home-display {
+    max-width: 13ch;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 800;
+    line-height: 0.94;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
+  }
+
+  .home-h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.6vw, 3.3rem);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+
+  .eyebrow-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-line::before {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.55;
+  }
+
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    line-height: 1.3;
+    text-transform: uppercase;
+    transition: color 220ms var(--ease-out-soft), gap 220ms var(--ease-out-soft);
+  }
+
+  .link-arrow:hover,
+  .link-arrow:focus-visible {
+    gap: 0.8rem;
+    color: var(--color-gold-deep);
+  }
+
+  .grain {
+    z-index: 0;
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
+    mix-blend-mode: soft-light;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Utilities
+   -------------------------------------------------------------------------- */
+
+@utility safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Horizontal scrollers that should not show a scrollbar chrome. */
+@utility scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Clamp copy to a comfortable measure. */
+@utility measure {
+  max-width: 68ch;
+}
+
+/* --------------------------------------------------------------------------
+   Reduced motion — nothing depends on animation to become readable.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .js-reveal [data-reveal],
+  .js-reveal [data-reveal="mask"],
+  .js-reveal [data-reveal="rule"] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  .hero-in {
+    opacity: 1;
+  }
+
+  .hero-video {
+    display: none;
+  }
+}
