@@ -28,6 +28,30 @@ add_action(
 // Block CSS only for blocks a page actually uses; the site pages use none.
 add_filter( 'should_load_separate_core_block_assets', '__return_true' );
 
+/*
+ * Elementor. Elementor Pro's Theme Builder swaps a theme's header and footer for
+ * its own templates unless the theme claims those locations; this theme draws
+ * its own, so it claims them. The Elementor kit restyles headings and links
+ * through a body class, which is dropped on the site pages.
+ */
+add_action(
+	'elementor/theme/register_locations',
+	function ( $locations ) {
+		if ( method_exists( $locations, 'register_core_location' ) ) {
+			$locations->register_core_location( 'header' );
+			$locations->register_core_location( 'footer' );
+		}
+	}
+);
+
+add_filter(
+	'body_class',
+	function ( $classes ) {
+		return gm_route_name() ? preg_grep( '/^elementor-kit-\d+$/', $classes, PREG_GREP_INVERT ) : $classes;
+	},
+	99
+);
+
 add_action(
 	'wp_enqueue_scripts',
 	function () {

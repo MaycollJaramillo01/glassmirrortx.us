@@ -51,7 +51,10 @@ tar -a -c -f glassmirror.zip --exclude=node_modules --exclude=package-lock.json 
 
 ## Notas
 
-- El tema ya imprime title, description, canonical, Open Graph y JSON-LD. Un plugin SEO
-  (Yoast, Rank Math) duplicaría esas etiquetas en las rutas del sitio.
+- Elementor: el tema usa siempre su propia portada, cabecera y pie, aunque la página de
+  inicio esté hecha con Elementor o haya cabecera/pie en el Creador de temas.
+- Rank Math: en las páginas del tema, sus etiquetas se quitan y quedan las del tema
+  (title, description, canonical, Open Graph y JSON-LD).
+- Tras reemplazar el tema, borrar la caché de Bluehost.
 - En nginx, si los `.txt` se sirven como estáticos, `/llms.txt` da 404: copiar `llms.txt`
   y `llms-full.txt` a la raíz web.

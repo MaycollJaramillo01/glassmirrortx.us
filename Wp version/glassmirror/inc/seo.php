@@ -348,11 +348,26 @@ function gm_print_graph( array $nodes ): void {
 	) . "</script>\n";
 }
 
+// Priority 99 so an SEO plugin's title (Rank Math uses 30) doesn't replace it.
 add_filter(
 	'pre_get_document_title',
 	function ( $title ) {
 		$seo = gm_seo();
 		return $seo ? $seo['title'] : $title;
+	},
+	99
+);
+
+// Rank Math, active on the live site, prints its own description, canonical,
+// Open Graph and schema for a static front page. On pages this theme describes,
+// the theme's tags are the only ones, so drop Rank Math's and core's canonical.
+add_action(
+	'wp',
+	function () {
+		if ( gm_seo() ) {
+			remove_all_actions( 'rank_math/head' );
+			remove_action( 'wp_head', 'rel_canonical' );
+		}
 	}
 );
 

@@ -151,12 +151,18 @@ add_action(
 	}
 );
 
+// Priority 99: Elementor's page templates and Theme Builder layouts (priority 11)
+// would otherwise replace these pages, a static front page built with Elementor included.
 add_filter(
 	'template_include',
 	function ( $template ) {
-		$name = get_query_var( 'gm_route' ) ? gm_route_name() : '';
-		return $name && '404' !== $name ? get_theme_file_path( "templates/$name.php" ) : $template;
-	}
+		$name = gm_route_name();
+		if ( 'home' === $name ) {
+			return get_theme_file_path( 'front-page.php' );
+		}
+		return get_query_var( 'gm_route' ) && '404' !== $name ? get_theme_file_path( "templates/$name.php" ) : $template;
+	},
+	99
 );
 
 // Every route above needs pretty permalinks.
