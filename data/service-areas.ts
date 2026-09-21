@@ -20,7 +20,7 @@ export const serviceAreas: ServiceArea[] = [
     stateCode: "TX",
     county: "Harris County",
     distanceMiles: 0,
-    seoTitle: "Glass & Mirror Company in Houston, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Glass & Mirror Services in Houston, TX | Martinez Orlyn",
     metaDescription:
       "Glass and mirror company in Houston, TX. Custom showers, mirrors, windows and glass repair for homes and businesses. Licensed & insured. Call (832) 253-2925.",
     h1: "Glass & Mirror Services in Houston, TX",
@@ -81,7 +81,7 @@ export const serviceAreas: ServiceArea[] = [
     stateCode: "TX",
     county: "Harris / Fort Bend County",
     distanceMiles: 30,
-    seoTitle: "Glass & Mirror Services in Katy, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Glass & Mirror Services in Katy, TX | Martinez Orlyn",
     metaDescription:
       "Glass and mirror services in Katy, TX. Custom showers, mirrors and window glass for west Houston corridor homes and businesses. Call (832) 253-2925.",
     h1: "Glass & Mirror Services in Katy, TX",
@@ -142,7 +142,7 @@ export const serviceAreas: ServiceArea[] = [
     stateCode: "TX",
     county: "Fort Bend County",
     distanceMiles: 20,
-    seoTitle: "Glass & Mirror Services in Sugar Land, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Glass & Mirror Services in Sugar Land, TX | Martinez Orlyn",
     metaDescription:
       "Glass and mirror services in Sugar Land, TX. Custom showers, mirrors and glass repair for Fort Bend homes and businesses. Call (832) 253-2925.",
     h1: "Glass & Mirror Services in Sugar Land, TX",
@@ -203,7 +203,7 @@ export const serviceAreas: ServiceArea[] = [
     stateCode: "TX",
     county: "Harris County",
     distanceMiles: 25,
-    seoTitle: "Glass & Mirror Services in Cypress, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Glass & Mirror Services in Cypress, TX | Martinez Orlyn",
     metaDescription:
       "Glass and mirror services in Cypress, TX. Shower glass, mirrors and window work for northwest Houston corridor homes. Call (832) 253-2925.",
     h1: "Glass & Mirror Services in Cypress, TX",
@@ -264,7 +264,7 @@ export const serviceAreas: ServiceArea[] = [
     stateCode: "TX",
     county: "Harris / Montgomery County",
     distanceMiles: 25,
-    seoTitle: "Glass & Mirror Services in Spring, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Glass & Mirror Services in Spring, TX | Martinez Orlyn",
     metaDescription:
       "Glass and mirror services in Spring, TX. Custom showers, mirrors and glass repair for north Houston and southern Montgomery County. Call (832) 253-2925.",
     h1: "Glass & Mirror Services in Spring, TX",
@@ -325,7 +325,7 @@ export const serviceAreas: ServiceArea[] = [
     stateCode: "TX",
     county: "Harris County",
     distanceMiles: 30,
-    seoTitle: "Glass & Mirror Services in Tomball, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Glass & Mirror Services in Tomball, TX | Martinez Orlyn",
     metaDescription:
       "Glass and mirror services in Tomball, TX. Shower glass, mirrors and window work for northwest Harris County. Call (832) 253-2925.",
     h1: "Glass & Mirror Services in Tomball, TX",
@@ -386,7 +386,7 @@ export const serviceAreas: ServiceArea[] = [
     stateCode: "TX",
     county: "Harris County",
     distanceMiles: 20,
-    seoTitle: "Glass & Mirror Services in Humble, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Glass & Mirror Services in Humble, TX | Martinez Orlyn",
     metaDescription:
       "Glass and mirror services in Humble, TX. Custom showers, mirrors and glass repair near US-59 and Bush Intercontinental. Call (832) 253-2925.",
     h1: "Glass & Mirror Services in Humble, TX",
@@ -447,7 +447,7 @@ export const serviceAreas: ServiceArea[] = [
     stateCode: "TX",
     county: "Montgomery County",
     distanceMiles: 40,
-    seoTitle: "Glass & Mirror Services in Conroe, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Glass & Mirror Services in Conroe, TX | Martinez Orlyn",
     metaDescription:
       "Glass and mirror services in Conroe, TX. Custom showers, mirrors and window glass for Montgomery County. Call (832) 253-2925.",
     h1: "Glass & Mirror Services in Conroe, TX",
@@ -508,7 +508,7 @@ export const serviceAreas: ServiceArea[] = [
     stateCode: "TX",
     county: "Brazoria County",
     distanceMiles: 25,
-    seoTitle: "Glass & Mirror Services in Alvin, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Glass & Mirror Services in Alvin, TX | Martinez Orlyn",
     metaDescription:
       "Glass and mirror services in Alvin, TX. Shower glass, mirrors and window repair for Brazoria County. Call (832) 253-2925.",
     h1: "Glass & Mirror Services in Alvin, TX",
@@ -569,7 +569,7 @@ export const serviceAreas: ServiceArea[] = [
     stateCode: "TX",
     county: "Galveston County",
     distanceMiles: 30,
-    seoTitle: "Glass & Mirror Services in League City, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Glass & Mirror Services in League City, TX | Martinez Orlyn",
     metaDescription:
       "Glass and mirror services in League City, TX. Custom showers, mirrors and window glass for the Clear Lake / Galveston County area. Call (832) 253-2925.",
     h1: "Glass & Mirror Services in League City, TX",

@@ -68,8 +68,8 @@ function gm_seo(): ?array {
 	switch ( $route['name'] ) {
 		case 'home':
 			$seo = array(
-				'title'       => 'Glass & Mirror in Houston, TX | Showers, Mirrors & Windows | Martinez Orlyn Glass & Mirror',
-				'description' => "Professional glass and mirror service in Houston, TX. Custom shower enclosures, mirrors, windows, solar screens and glass repair for residential and commercial properties. Licensed & insured. Call {$b['phone']}.",
+				'title'       => 'Glass & Mirror Company in Houston, TX | Martinez Orlyn',
+				'description' => "Glass and mirror service in Houston, TX: custom shower enclosures, mirrors, windows and glass repair. Licensed & insured. Call {$b['phone']}.",
 				'path'        => '/',
 				'schema'      => array( 'webpage', gm_faq_schema( gm_home_faqs() ) ),
 			);
@@ -77,8 +77,8 @@ function gm_seo(): ?array {
 
 		case 'about':
 			$seo = array(
-				'title'       => 'About Martinez Orlyn Glass & Mirror | Houston Glass & Mirror Company',
-				'description' => 'Martinez Orlyn Glass & Mirror is a Houston, Texas glass and mirror company for custom showers, mirrors, windows and glass repair. Licensed & insured. Serving Houston and surrounding communities.',
+				'title'       => 'About Martinez Orlyn Glass & Mirror | Houston, TX',
+				'description' => 'Martinez Orlyn Glass & Mirror is a family-owned glass and mirror company in Houston, TX: custom showers, mirrors, windows and glass repair. Licensed & insured.',
 				'path'        => '/about',
 				'trail'       => array( $home, array( 'name' => 'About', 'href' => '/about' ) ),
 				'schema'      => array( 'webpage', 'breadcrumbs' ),
@@ -97,7 +97,7 @@ function gm_seo(): ?array {
 
 		case 'gallery':
 			$seo = array(
-				'title'       => 'Glass & Mirror Gallery | Project Photos | Martinez Orlyn Glass & Mirror',
+				'title'       => 'Glass & Mirror Project Photos | Martinez Orlyn',
 				'description' => 'Project photographs from Martinez Orlyn Glass & Mirror in Houston, TX: shower enclosures, mirrors, windows and glass installation work.',
 				'path'        => '/gallery',
 				'trail'       => array( $home, array( 'name' => 'Gallery', 'href' => '/gallery' ) ),
@@ -116,8 +116,8 @@ function gm_seo(): ?array {
 
 		case 'services':
 			$seo = array(
-				'title'       => 'Glass & Mirror Services in Houston, TX | Martinez Orlyn Glass & Mirror',
-				'description' => 'Glass and mirror services in Houston, TX: custom shower enclosures, shower doors, mirrors, mirrored walls, windows, double-pane glass, solar screens, installation, repair and reglazing.',
+				'title'       => 'Glass & Mirror Services | Martinez Orlyn, Houston TX',
+				'description' => 'Glass and mirror services in Houston, TX: shower enclosures and doors, mirrors, mirrored walls, windows, double-pane glass, solar screens and reglazing.',
 				'path'        => '/services',
 				'trail'       => array( $home, array( 'name' => 'Services', 'href' => '/services' ) ),
 				'schema'      => array( 'webpage', 'breadcrumbs' ),
@@ -159,7 +159,7 @@ function gm_seo(): ?array {
 
 		case 'service-areas':
 			$seo = array(
-				'title'       => 'Glass & Mirror Service Areas | Martinez Orlyn Glass & Mirror',
+				'title'       => 'Glass & Mirror Service Areas | Martinez Orlyn',
 				'description' => "{$b['name']} serves Houston and nearby communities across Harris, Fort Bend, Montgomery, Brazoria and Galveston counties.",
 				'path'        => '/service-areas',
 				'trail'       => array( $home, array( 'name' => 'Service Areas', 'href' => '/service-areas' ) ),
@@ -349,11 +349,13 @@ function gm_print_graph( array $nodes ): void {
 }
 
 // Priority 99 so an SEO plugin's title (Rank Math uses 30) doesn't replace it.
+// A title returned here short-circuits wp_get_document_title(), which then skips
+// its own escaping, so the ampersands in the company name are escaped here.
 add_filter(
 	'pre_get_document_title',
 	function ( $title ) {
 		$seo = gm_seo();
-		return $seo ? $seo['title'] : $title;
+		return $seo ? esc_html( $seo['title'] ) : $title;
 	},
 	99
 );
@@ -364,20 +366,55 @@ add_filter(
 add_action(
 	'wp',
 	function () {
-		if ( gm_seo() ) {
-			remove_all_actions( 'rank_math/head' );
-			remove_action( 'wp_head', 'rel_canonical' );
+		if ( ! gm_seo() ) {
+			return;
 		}
+		remove_all_actions( 'rank_math/head' );
+		remove_action( 'wp_head', 'rel_canonical' );
+
+		/*
+		 * Rank Math unhooks core's _wp_render_title_tag and prints the <title>
+		 * from rank_math/head instead. Emptying that hook therefore took the
+		 * title off every page this theme serves; hand it back to core. Adding
+		 * a named function twice at one priority is a no-op, so this is safe
+		 * whether or not Rank Math is installed.
+		 */
+		add_action( 'wp_head', '_wp_render_title_tag', 1 );
+
+		// Its LocalBusiness graph outlives rank_math/head and contradicts ours
+		// (a second @id for the same business). One graph per page.
+		add_filter( 'rank_math/json_ld', '__return_empty_array', 99 );
 	}
 );
+
+/**
+ * The default category (/category/sin-categoria/) comes with the install and
+ * holds no editorial value, so it stays out of the index. Deleting the category
+ * in wp-admin retires the URL for good; this keeps it quiet until then.
+ */
+function gm_is_default_category(): bool {
+	return is_category( (int) get_option( 'default_category' ) );
+}
 
 add_filter(
 	'wp_robots',
 	function ( $robots ) {
 		$seo = gm_seo();
-		if ( $seo && ! empty( $seo['noindex'] ) ) {
+		if ( ( $seo && ! empty( $seo['noindex'] ) ) || gm_is_default_category() ) {
 			$robots['noindex'] = true;
 			$robots['follow']  = true;
+		}
+		return $robots;
+	}
+);
+
+// Rank Math prints the robots meta itself, and spells the values out as strings.
+add_filter(
+	'rank_math/frontend/robots',
+	function ( $robots ) {
+		if ( gm_is_default_category() ) {
+			unset( $robots['index'] );
+			$robots['noindex'] = 'noindex';
 		}
 		return $robots;
 	}
@@ -455,7 +492,36 @@ add_action(
 	2
 );
 
-// Site routes in the core sitemap (/wp-sitemap.xml). Core already lists the front page.
+/**
+ * Every page this theme serves, in sitemap order. These are the canonical URLs:
+ * the old pages 301 here (inc/routes.php) and nothing else belongs in a sitemap.
+ */
+function gm_sitemap_paths(): array {
+	$paths = array( '/', '/services', '/service-areas', '/gallery', '/about', '/contact', '/privacy-policy' );
+	foreach ( gm_content( 'services' ) as $service ) {
+		$paths[] = "/services/{$service['slug']}";
+	}
+	foreach ( gm_content( 'serviceAreas' ) as $area ) {
+		$paths[] = "/service-areas/{$area['slug']}";
+	}
+	return $paths;
+}
+
+/*
+ * The routes are virtual, so no sitemap plugin can discover them. Rank Math's
+ * sitemap replaces core's (/wp-sitemap.xml redirects to /sitemap_index.xml) and
+ * listed none of them, which is why the new pages were missing from the one
+ * sitemap Google reads. The theme publishes its own and declares it in
+ * robots.txt, so the pages are announced whichever plugin owns the index.
+ */
+add_filter(
+	'robots_txt',
+	function ( $output ) {
+		return rtrim( $output ) . "\nSitemap: " . gm_url( '/glassmirror-sitemap.xml' ) . "\n";
+	}
+);
+
+// Core's own sitemap, for when no plugin has taken it over. Core lists the front page itself.
 add_action(
 	'init',
 	function () {
@@ -471,18 +537,11 @@ add_action(
 				}
 
 				public function get_url_list( $page_num, $object_subtype = '' ) {
-					$paths = array( '/services', '/service-areas', '/gallery', '/about', '/contact', '/privacy-policy' );
-					foreach ( gm_content( 'services' ) as $service ) {
-						$paths[] = "/services/{$service['slug']}";
-					}
-					foreach ( gm_content( 'serviceAreas' ) as $area ) {
-						$paths[] = "/service-areas/{$area['slug']}";
-					}
 					return array_map(
 						function ( $path ) {
 							return array( 'loc' => gm_abs( $path ) );
 						},
-						$paths
+						array_values( array_diff( gm_sitemap_paths(), array( '/' ) ) )
 					);
 				}
 

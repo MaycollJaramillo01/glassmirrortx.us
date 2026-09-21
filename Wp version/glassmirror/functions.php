@@ -70,6 +70,32 @@ add_action(
 	}
 );
 
+/*
+ * These pages are drawn by the theme: no blocks, no Elementor widgets, no
+ * Wonder Blocks. The plugins that serve the older pages enqueued their whole
+ * front end here anyway — 41 stylesheets and 37 scripts on the home page, with
+ * 77 KB of Newfold utility CSS inlined into every <head>. Drop those families
+ * on the theme's own routes and leave the older pages, which do use them,
+ * untouched. Analytics, translation, popups and jQuery are not in the list.
+ */
+add_action(
+	'wp_enqueue_scripts',
+	function () {
+		if ( ! gm_route_name() ) {
+			return;
+		}
+
+		$unused = '/^(elementor|e-|eae|ekit|widget-|swiper|font-awesome|vegas|nfd-|wp-block-library|classic-theme-styles|global-styles)/';
+
+		foreach ( array( wp_styles(), wp_scripts() ) as $assets ) {
+			foreach ( preg_grep( $unused, $assets->queue ) as $handle ) {
+				$assets->dequeue( $handle );
+			}
+		}
+	},
+	100
+);
+
 // Fonts are self-hosted; preload them like next/font did.
 add_action(
 	'wp_head',

@@ -77,9 +77,9 @@ const drafts: Draft[] = [
     slug: "custom-shower-enclosures",
     name: "Custom Shower Enclosures",
     group: "bathroom-glass",
-    seoTitle: "Custom Shower Enclosures in Houston, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Custom Shower Enclosures in Houston, TX | Martinez Orlyn",
     metaDescription:
-      "Custom shower enclosures in Houston, TX. Frameless and framed glass measured to your opening, fabricated and installed. Licensed & insured. Get an appointment: (832) 253-2925.",
+      "Custom shower enclosures in Houston, TX. Frameless and framed glass measured, fabricated and installed. Licensed & insured. Call (832) 253-2925.",
     h1: "Custom Shower Enclosures in Houston, TX",
     eyebrow: "Bathroom Glass",
     cardSummary: "Frameless and framed shower glass fabricated to your bathroom opening.",
@@ -183,7 +183,7 @@ const drafts: Draft[] = [
     slug: "shower-doors",
     name: "Shower Doors",
     group: "bathroom-glass",
-    seoTitle: "Shower Doors in Houston, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Shower Doors in Houston, TX | Martinez Orlyn",
     metaDescription:
       "Shower doors in Houston, TX. Bypass, pivot and hinged glass doors measured and installed for residential baths. Licensed & insured. Call (832) 253-2925.",
     h1: "Shower Doors in Houston, TX",
@@ -285,9 +285,9 @@ const drafts: Draft[] = [
     slug: "custom-mirrors",
     name: "Custom Mirrors",
     group: "mirrors-glass",
-    seoTitle: "Custom Mirrors in Houston, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Custom Mirrors in Houston, TX | Martinez Orlyn",
     metaDescription:
-      "Custom mirrors in Houston, TX. Vanity, wall and specialty mirrors cut and installed for homes and businesses. Licensed & insured. Get an appointment: (832) 253-2925.",
+      "Custom mirrors in Houston, TX. Vanity, wall and specialty mirrors cut and installed for homes and businesses. Licensed & insured. Call (832) 253-2925.",
     h1: "Custom Mirrors in Houston, TX",
     eyebrow: "Mirrors & Glass",
     cardSummary: "Vanity, wall and specialty mirrors cut to size and installed.",
@@ -390,7 +390,7 @@ const drafts: Draft[] = [
     slug: "mirrored-walls",
     name: "Mirrored Walls",
     group: "mirrors-glass",
-    seoTitle: "Mirrored Walls in Houston, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Mirrored Walls in Houston, TX | Martinez Orlyn",
     metaDescription:
       "Mirrored walls in Houston, TX. Wall-to-wall mirror panels for homes, studios and commercial interiors. Licensed & insured. Call (832) 253-2925.",
     h1: "Mirrored Walls in Houston, TX",
@@ -492,9 +492,9 @@ const drafts: Draft[] = [
     slug: "windows-and-doors",
     name: "Windows & Doors",
     group: "windows-doors",
-    seoTitle: "Window & Door Glass in Houston, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Window & Door Glass in Houston, TX | Martinez Orlyn",
     metaDescription:
-      "Window and door glass in Houston, TX. Replacement panes, door glass and new installs for homes and businesses. Licensed & insured. Get an appointment: (832) 253-2925.",
+      "Window and door glass in Houston, TX. Replacement panes, door glass and new installs for homes and businesses. Licensed & insured. Call (832) 253-2925.",
     h1: "Window & Door Glass in Houston, TX",
     eyebrow: "Windows & Doors",
     cardSummary: "Replacement and new glass for residential and commercial windows and doors.",
@@ -597,7 +597,7 @@ const drafts: Draft[] = [
     slug: "double-pane-windows",
     name: "Double-Pane Windows",
     group: "windows-doors",
-    seoTitle: "Double-Pane Window Glass in Houston, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Double-Pane Window Glass in Houston, TX | Martinez Orlyn",
     metaDescription:
       "Double-pane window glass in Houston, TX. Insulated glass unit replacement for fogged or failed windows. Licensed & insured. Call (832) 253-2925.",
     h1: "Double-Pane Window Glass in Houston, TX",
@@ -696,7 +696,7 @@ const drafts: Draft[] = [
     slug: "solar-screens",
     name: "Solar Screens",
     group: "windows-doors",
-    seoTitle: "Solar Screens in Houston, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Solar Screens in Houston, TX | Martinez Orlyn",
     metaDescription:
       "Solar screens in Houston, TX. Window screens that cut glare and heat while keeping the view. Licensed & insured. Call (832) 253-2925.",
     h1: "Solar Screens in Houston, TX",
@@ -798,9 +798,9 @@ const drafts: Draft[] = [
     slug: "glass-installation-repair",
     name: "Glass Installation & Repair",
     group: "glass-services",
-    seoTitle: "Glass Installation & Repair in Houston, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Glass Installation & Repair in Houston, TX | Martinez Orlyn",
     metaDescription:
-      "Glass installation and repair in Houston, TX. Residential and commercial glass set, replaced and repaired. Licensed & insured. Get an appointment: (832) 253-2925.",
+      "Glass installation and repair in Houston, TX. Residential and commercial glass set, replaced and repaired. Licensed & insured. Call (832) 253-2925.",
     h1: "Glass Installation & Repair in Houston, TX",
     eyebrow: "Glass Services",
     cardSummary: "Install new glass and repair damaged glass across homes and businesses.",
@@ -902,7 +902,7 @@ const drafts: Draft[] = [
     slug: "reglazing",
     name: "Reglazing",
     group: "glass-services",
-    seoTitle: "Window Reglazing in Houston, TX | Martinez Orlyn Glass & Mirror",
+    seoTitle: "Window Reglazing in Houston, TX | Martinez Orlyn",
     metaDescription:
       "Window and door reglazing in Houston, TX. Failed glazing compound and loose panes reset with fresh glass or seals. Call (832) 253-2925.",
     h1: "Window & Door Reglazing in Houston, TX",
