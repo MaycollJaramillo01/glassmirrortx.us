@@ -67,7 +67,7 @@ El código ya redirige y etiqueta lo que puede. Estos pasos son del panel:
 3. **Search Console**: enviar `https://glassmirrortx.us/glassmirror-sitemap.xml`
    y revisar Páginas → Duplicados y Redirecciones después del despliegue.
 4. **Perfil de Negocio**: confirmar que teléfono, dirección, horario, licencia
-   T189489 y las reseñas del schema (4.9 / 158) coinciden con Google.
+   T189489 y las reseñas del schema (4.9 / 176) coinciden con Google.
 
 ## Rehacer el zip
 

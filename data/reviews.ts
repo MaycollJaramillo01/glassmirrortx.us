@@ -1,15 +1,18 @@
 import type { Testimonial } from "@/types";
 
+import { business } from "./business";
+
 /**
  * Google Business Profile social proof.
  *
  * Rating and count verified on the public Google Knowledge Panel /
- * Maps place for Martinez Orlyn Glass & Mirror (Aug 2026).
+ * Maps place for Martinez Orlyn Glass & Mirror (Oct 2026); the numbers
+ * themselves live in data/business.ts.
  * Quotes are recent Google reviews pasted by the team — never invented.
  */
 export const googleReviews = {
-  rating: 4.9,
-  count: 158,
+  rating: business.googleRating,
+  count: business.googleReviewCount,
   url: "https://maps.app.goo.gl/DzruyyJ2gzJxSssC6",
   label: "Google",
 } as const;

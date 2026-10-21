@@ -74,11 +74,11 @@ export const business = {
   googleMaps: "https://maps.app.goo.gl/DzruyyJ2gzJxSssC6",
 
   /**
-   * Google Business Profile rating (Knowledge Panel, Aug 2026).
+   * Google Business Profile rating (Knowledge Panel, Oct 2026).
    * Featured quotes live in data/reviews.ts.
    */
   googleRating: 4.9,
-  googleReviewCount: 158,
+  googleReviewCount: 176,
 
   messenger: "https://m.me/MartinezOrlyn",
   whatsapp: "https://wa.me/18322532925",
